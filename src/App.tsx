@@ -3,6 +3,7 @@ import {RootLayout} from "./components/RootLayout.tsx";
 import {createBrowserRouter, RouterProvider} from "react-router";
 import {Dashboard} from "./pages/Dashboard.tsx";
 import {StaffPage} from "./pages/StaffPage.tsx";
+import {VehiclePage} from "./pages/VehiclePage.tsx";
 
 function App() {
     const routes = createBrowserRouter([
@@ -11,7 +12,8 @@ function App() {
             element: <RootLayout/>,
             children: [
                 {path: '', element: <Dashboard/>},
-                {path: '/staff', element: <StaffPage/>}
+                {path: '/staff', element: <StaffPage/>},
+                {path: '/vehicle', element: <VehiclePage/>},
             ]
         },
     ]);

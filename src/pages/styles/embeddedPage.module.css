@@ -8,3 +8,84 @@
     display: flex;
     flex-direction: column;
 }
+
+#filterContainer {
+    background: #fff;
+    padding-bottom: 15px;
+}
+
+#filterContainer > div:first-child {
+    margin-bottom: 20px;
+}
+
+#filterContainer h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+#filter {
+    flex: 1;
+    margin: auto;
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
+}
+
+#mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    scrollbar-width: none;
+}
+
+#mainContent ::-webkit-scrollbar {
+    display: none;
+}
+
+#tableContainer {
+    flex: 1;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+#tableContainer > table {
+    width: 100%;
+    font-size: 0.9rem;
+    border-radius: 10px;
+}
+
+#tableContainer > table > thead {
+    background: #cfffe2;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+#tableContainer > table > thead > tr > th {
+    padding: 10px 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#tableContainer > table > tbody {
+    flex: 1;
+    overflow-y: scroll;
+}
+
+#tableContainer > table > tbody > tr {
+    background: #f9f9f9;
+    border: none;
+    border-bottom: 1px solid #727374;
+}
+
+#tableContainer > table > tbody > tr > td {
+    text-align: center;
+    padding: 10px 40px;
+}
+
+.actionContainer {
+    gap: 10px;
+}

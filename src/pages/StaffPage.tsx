@@ -8,7 +8,6 @@ import {UpdateRowBtn} from "../components/buttons/UpdateRowBtn.tsx";
 import {DeleteRowBtn} from "../components/buttons/DeleteRowBtn.tsx";
 import {Staff} from "../model/Staff.ts";
 import {useDispatch, useSelector} from "react-redux";
-import styles from "./styles/staff.module.css"
 import page from "./styles/embeddedPage.module.css"
 import {useState} from "react";
 import {StaffAddOrUpdate} from "../components/popup/StaffAddOrUpdate.tsx";
@@ -19,6 +18,10 @@ interface RootState {
 }
 
 export function StaffPage() {
+    const [staffName, setStaffName] = useState('');
+    const [gender, setGender] = useState('');
+    const [designation, setDesignation] = useState('');
+
     const [openPopup, setOpenPopup] = useState(false);
     const [popupType, setPopupType] = useState<"save" | "update">("save");
     const [selectedStaffId, setSelectedStaffId] = useState<string | undefined>(undefined);
@@ -67,7 +70,7 @@ export function StaffPage() {
     };
 
     const handleSearch = () => {
-        console.log('Search');
+        console.log('Search Staff with name: ', staffName , 'gender: ', gender, 'designation: ', designation);
     }
 
     const handleClearFilter = () => {
@@ -83,31 +86,33 @@ export function StaffPage() {
     };
 
     return (
-        <div className={`${page.embeddedPage}`}>
-            <section id={`${styles.filterContainer}`}>
+        <div className={page.embeddedPage}>
+            <section id={page.filterContainer}>
                 <div className="d-flex justify-content-between">
                     <h1>Staff</h1>
                     <AddBtn text={'Add Staff'} onClick={handleAdd}/>
                 </div>
-                <div className="d-flex justify-content-even align-items-center" id={`${styles.filter}`}>
-                    <SearchComponent placeholder={'Search by staff name'}/>
+                <div className="d-flex justify-content-even align-items-center" id={`${page.filter}`}>
+                    <SearchComponent placeholder={'Search by staff name'} onChange={setStaffName}/>
 
                     <SelectorComponent
                         label="Gender"
                         options={genderOptions}
+                        onChange={setGender}
                     />
 
                     <SelectorComponent
                         label="Designation"
                         options={designationOptions}
+                        onChange={setDesignation}
                     />
                     <SearchButton onClick={handleSearch}/>
                     <ClearFilterButton onClick={handleClearFilter}/>
                 </div>
             </section>
 
-            <section id={`${styles.mainContent}`}>
-                <div id={`${styles.tableContainer}`}>
+            <section id={`${page.mainContent}`}>
+                <div id={`${page.tableContainer}`}>
                     <table>
                         <thead>
                         <tr>
@@ -121,13 +126,13 @@ export function StaffPage() {
                         <tbody>
                         {staffs && staffs.map((staff: Staff, index: number) => {
                             return (
-                                <tr key={index} data-id={staff.id}>
+                                <tr key={index}>
                                     <td>{staff.name}</td>
                                     <td>{staff.designation}</td>
                                     <td>{staff.email}</td>
                                     <td>{staff.gender}</td>
                                     <td>
-                                        <div className={`${styles.actionContainer} d-flex`}>
+                                        <div className={`${page.actionContainer} d-flex`}>
                                             <ViewRowBtn onClick={() => handleView(staff.id)}/>
                                             <UpdateRowBtn onClick={() => handleUpdate(staff.id)}/>
                                             <DeleteRowBtn onClick={() => handleDelete(staff.id)}/>
