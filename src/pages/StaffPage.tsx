@@ -92,7 +92,7 @@ export function StaffPage() {
                     <h1>Staff</h1>
                     <AddBtn text={'Add Staff'} onClick={handleAdd}/>
                 </div>
-                <div className="d-flex justify-content-even align-items-center" id={`${page.filter}`}>
+                <div className="d-flex justify-content-even align-items-center" id={page.filter}>
                     <SearchComponent placeholder={'Search by staff name'} onChange={setStaffName}/>
 
                     <SelectorComponent

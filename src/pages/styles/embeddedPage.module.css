@@ -89,3 +89,15 @@
 .actionContainer {
     gap: 10px;
 }
+
+#cardContainer {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+#cardContainer ::-webkit-scrollbar {
+    display: none;
+}

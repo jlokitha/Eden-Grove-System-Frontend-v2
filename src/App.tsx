@@ -6,6 +6,7 @@ import {StaffPage} from "./pages/StaffPage.tsx";
 import {VehiclePage} from "./pages/VehiclePage.tsx";
 import {EquipmentPage} from "./pages/EquipmentPage.tsx";
 import {UserPage} from "./pages/UserPage.tsx";
+import {FieldPage} from "./pages/FieldPage.tsx";
 
 function App() {
     const routes = createBrowserRouter([
@@ -17,7 +18,8 @@ function App() {
                 {path: '/staff', element: <StaffPage/>},
                 {path: '/vehicle', element: <VehiclePage/>},
                 {path: '/equipment', element: <EquipmentPage/>},
-                {path: '/user', element: <UserPage/>}
+                {path: '/user', element: <UserPage/>},
+                {path: '/field', element: <FieldPage/>},
             ]
         },
     ]);

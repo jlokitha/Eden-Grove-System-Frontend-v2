@@ -4,12 +4,14 @@ import {configureStore} from "@reduxjs/toolkit";
 import VehicleReducer from "../reducers/VehicleReducer.ts";
 import EquipmentReducer from "../reducers/EquipmentReducer.ts";
 import UserReducer from "../reducers/UserReducer.ts";
+import FieldReducer from "../reducers/FieldReducer.ts";
 
 export const rootReducer = combineReducers({
     staff: StaffReducer,
     vehicle: VehicleReducer,
     equipment: EquipmentReducer,
-    user: UserReducer
+    user: UserReducer,
+    field: FieldReducer,
 });
 
 export const store = configureStore({
