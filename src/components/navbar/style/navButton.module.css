@@ -1,4 +1,4 @@
-.nav-btn {
+.navBtn {
     width: 100%;
     min-height: 45px;
     border: none;
@@ -12,20 +12,20 @@
     transition: background 0.5s, opacity 0.3s;
 }
 
-.nav-btn img {
+.navBtn img {
     max-height: 20px;
     margin-right: 10px;
 }
 
-.nav-btn img[src="/assets/icons/user-profile.svg"] {
+.navBtn img[src="/assets/icons/user-profile.svg"] {
     max-height: 30px;
 }
 
-.nav-btn:not(.nav-btn-active):hover {
+.navBtn:not(.nav-btn-active):hover {
     background: #eeeeee;
 }
 
-.nav-btn-active {
+.navBtnActive {
     background: #cfffe2;
 }
 

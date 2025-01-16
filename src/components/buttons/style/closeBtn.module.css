@@ -1,0 +1,10 @@
+.closeBtn {
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    transition: 300ms ease-in-out;
+}
+
+.closeBtn:hover {
+    background: var(--color-hover-bg);
+}

@@ -1,0 +1,19 @@
+.filterComponent {
+    margin-right: 30px;
+    width: 100%;
+}
+
+.filterComponent > label {
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+}
+
+.filterComponent > input,
+.filterComponent > select {
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid #727374;
+    border-radius: 10px;
+    padding: 8px;
+    min-width: 100px;
+}

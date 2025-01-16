@@ -1,0 +1,22 @@
+.detailContainer {
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.detailContainer .lbl {
+    color: #727374;
+}
+
+.input, .select {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    padding: 10px;
+    border-bottom: 1px solid #727374;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
