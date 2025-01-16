@@ -1,4 +1,5 @@
-import "./styles/passwordUpdateBtn.css"
+import styles from "./style/passwordUpdateBtn.module.css"
+import navBtn from "./style/navButton.module.css"
 
 interface PasswordUpdateButtonProps {
     staffName: string;
@@ -8,11 +9,11 @@ interface PasswordUpdateButtonProps {
 
 export function PasswordUpdateBtn(props: PasswordUpdateButtonProps) {
     return (
-        <button className="nav-btn d-flex justify-content-left align-items-center" id="password-update-btn" onClick={props.onClick}>
-            <img src="/src/assets/icons/user-profile.svg" alt="User profile button icon in black color" />
-            <div id="user-info">
-                <p className="name">{props.staffName}</p>
-                <p className="role">{props.staffRole}</p>
+        <button className={`${navBtn.navBtn} d-flex justify-content-left align-items-center`} onClick={props.onClick}>
+            <img src="/src/assets/icons/user-profile.svg" id={styles.profileImg} alt="User profile button icon in black color" />
+            <div id={styles.userInfo}>
+                <p>{props.staffName}</p>
+                <p>{props.staffRole}</p>
             </div>
         </button>
     );

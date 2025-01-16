@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import "./styles/dateContainer.css"
+import styles from "./style/dateContainer.module.css"
 
 export function DateContainer() {
     const [date, setDate] = useState('');
@@ -31,9 +31,9 @@ export function DateContainer() {
     }, []);
 
     return (
-        <div id="date-container">
-            <p id="date">{date}</p>
-            <p id="time">{time}</p>
+        <div id={styles.dateContainer}>
+            <p>{date}</p>
+            <p>{time}</p>
         </div>
     )
 }

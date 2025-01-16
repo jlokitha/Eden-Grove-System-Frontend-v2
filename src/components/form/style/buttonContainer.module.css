@@ -1,0 +1,18 @@
+.buttonContainer {
+    width: 100%;
+    padding-top: 10px;
+}
+
+.buttonContainer button {
+    width: 120px;
+    height: 40px;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+}
+
+.buttonContainer button:hover {
+    opacity: 0.8;
+}

@@ -1,5 +1,5 @@
 import {NavButton} from "./NavButton.tsx";
-import "./styles/navigation.css"
+import styles from "./style/navigation.module.css"
 import {PasswordUpdateBtn} from "./PasswordUpdateBtn.tsx";
 import {LogoutButton} from "./LogoutButton.tsx";
 
@@ -20,18 +20,18 @@ const navButtons = [
 
 export function Navigation() {
     return (
-        <div className="d-flex flex-column align-items-center" id="navbar">
-            <div id="logo-container">
-                <img src="/src/assets/icons/logo.svg" alt="Eden Grove logo" id="logo"/>
+        <div className="d-flex flex-column align-items-center" id={styles.navbar}>
+            <div>
+                <img src="/src/assets/icons/logo.svg" alt="Eden Grove logo" id={styles.logo}/>
             </div>
 
-            <div id="nav-btn-container">
+            <div className={styles.navBtnContainer}>
                 {navButtons.map((button, index) => (
                     <NavButton key={index} icon={button.icon} text={button.text} path={button.path}/>
                 ))}
             </div>
 
-            <div id="user-action">
+            <div className={styles.navBtnContainer}>
                 <PasswordUpdateBtn staffName="John Doe" staffRole="MANAGER"
                                    onClick={() => console.log('Profile clicked')}/>
                 <LogoutButton/>

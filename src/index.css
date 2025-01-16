@@ -21,3 +21,11 @@
   font-weight: 400;
   font-style: normal;
 }
+
+body {
+  overflow-y: hidden;
+}
+
+.rootLayout {
+  background: #eeeeee;
+}

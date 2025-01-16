@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import "./styles/logoutBtn.css";
+import styles from "./style/logoutBtn.module.css";
+import navBtn from "./style/navButton.module.css"
 
 export function LogoutButton() {
     const [iconSrc, setIconSrc] = useState('/src/assets/icons/logout-black.svg');
@@ -18,8 +19,8 @@ export function LogoutButton() {
 
     return (
         <button
-            className="nav-btn d-flex justify-content-left align-items-center"
-            id="logout-btn"
+            className={`${navBtn.navBtn} d-flex justify-content-left align-items-center`}
+            id={styles.logoutBtn}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}

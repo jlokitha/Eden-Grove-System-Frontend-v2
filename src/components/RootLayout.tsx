@@ -7,9 +7,9 @@ export function RootLayout() {
         <div className="d-flex">
             <Navigation/>
 
-            <section className="d-flex flex-column w-100" id="main-page-container">
+            <section className="d-flex flex-column w-100">
                 <TopBar/>
-                <Outlet/>
+                <Outlet></Outlet>
             </section>
         </div>
     );
