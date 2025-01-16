@@ -21,7 +21,7 @@
     max-height: 30px;
 }
 
-.navBtn:not(.nav-btn-active):hover {
+.navBtn:not(.navBtnActive):hover {
     background: #eeeeee;
 }
 
