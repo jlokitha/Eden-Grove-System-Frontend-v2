@@ -9,6 +9,7 @@ import {Equipment} from "../model/Euipment.ts";
 import {ViewRowBtn} from "../components/buttons/ViewRowBtn.tsx";
 import {UpdateRowBtn} from "../components/buttons/UpdateRowBtn.tsx";
 import {DeleteRowBtn} from "../components/buttons/DeleteRowBtn.tsx";
+import {PageTitle} from "../components/filter/PageTitle.tsx";
 
 interface RootState {
     equipment: Equipment[];
@@ -63,7 +64,7 @@ export function EquipmentPage() {
     return (
         <div className={page.embeddedPage}>
             <section id={page.filterContainer}>
-                <h1>Equipment</h1>
+                <PageTitle title={'Equipment'}/>
                 <div
                     className="d-flex justify-content-between align-items-center flex-wrap gap-3"
                 >

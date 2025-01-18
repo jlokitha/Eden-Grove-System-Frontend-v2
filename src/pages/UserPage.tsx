@@ -4,9 +4,8 @@ import {SelectorComponent} from "../components/filter/SelectorComponent.tsx";
 import {ClearFilterButton} from "../components/filter/ClearFilterButton.tsx";
 import {useSelector} from "react-redux";
 import {User} from "../model/User.ts";
-import {ViewRowBtn} from "../components/buttons/ViewRowBtn.tsx";
-import {UpdateRowBtn} from "../components/buttons/UpdateRowBtn.tsx";
 import {DeleteRowBtn} from "../components/buttons/DeleteRowBtn.tsx";
+import {PageTitle} from "../components/filter/PageTitle.tsx";
 
 interface RootState {
     user: User[];
@@ -44,7 +43,7 @@ export function UserPage() {
         <div className={page.embeddedPage}>
             <section id={page.filterContainer}>
                 <div className="d-flex justify-content-between">
-                    <h1>User</h1>
+                    <PageTitle title={'User'}/>
                     <div className="d-flex justify-content-between align-items-end">
                         <SelectorComponent label={'Role'} options={roleOptions} onChange={setRole}/>
                         <ClearFilterButton onClick={handleClearFilter}/>

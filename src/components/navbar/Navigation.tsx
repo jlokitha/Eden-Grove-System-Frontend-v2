@@ -15,7 +15,7 @@ const navButtons = [
         text: 'Monitoring Log',
         path: '/log',
     },
-    { icon: '/src/assets/icons/vehicle-black-svg.svg', text: 'Vehicle', path: '/vehicle' },
+    { icon: '/src/assets/icons/vehicle-black.svg', text: 'Vehicle', path: '/vehicle' },
     { icon: '/src/assets/icons/equipment-black.svg', text: 'Equipment', path: '/equipment' },
     { icon: '/src/assets/icons/user-black.svg', text: 'User', path: '/user' },
 ];

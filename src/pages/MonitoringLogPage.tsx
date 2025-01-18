@@ -8,6 +8,7 @@ import {AddBtn} from "../components/buttons/AddBtn.tsx";
 import {useSelector} from "react-redux";
 import {MonitoringLog} from "../model/MonitoringLog.ts";
 import {LogCard} from "../components/cards/LogCard.tsx";
+import {PageTitle} from "../components/filter/PageTitle.tsx";
 
 interface RootState {
     log: MonitoringLog[];
@@ -41,7 +42,7 @@ export function MonitoringLogPage() {
     return (
         <div className={page.embeddedPage}>
             <section id={page.filterContainer}>
-                <h1>Monitoring Log</h1>
+                <PageTitle title={'Monitoring Log'}/>
                 <div
                     className="d-flex justify-content-between align-items-center flex-wrap gap-3"
                 >
