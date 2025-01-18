@@ -8,6 +8,7 @@ import {NumberFieldComponent} from "../components/filter/NumberFieldComponent.ts
 import {useSelector} from "react-redux";
 import {Field} from "../model/Field.ts";
 import {FieldCard} from "../components/cards/FieldCard.tsx";
+import {PageTitle} from "../components/filter/PageTitle.tsx";
 
 interface RootState {
     field: Field[];
@@ -47,7 +48,7 @@ export function FieldPage() {
         <div className={page.embeddedPage}>
             <section id={page.filterContainer}>
                 <div className="d-flex justify-content-between">
-                    <h1>Field</h1>
+                    <PageTitle title={'Field'}/>
                     <AddBtn text={'Add Field'} onClick={handleAdd}/>
                 </div>
                 <div className="d-flex justify-content-even align-items-center" id={page.filter}>

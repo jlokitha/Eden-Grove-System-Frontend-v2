@@ -12,6 +12,7 @@ import page from "./styles/embeddedPage.module.css"
 import {useState} from "react";
 import {StaffAddOrUpdate} from "../components/popup/StaffAddOrUpdate.tsx";
 import {setStaff} from "../reducers/StaffReducer.ts";
+import {PageTitle} from "../components/filter/PageTitle.tsx";
 
 interface RootState {
     staff: Staff[];
@@ -89,7 +90,7 @@ export function StaffPage() {
         <div className={page.embeddedPage}>
             <section id={page.filterContainer}>
                 <div className="d-flex justify-content-between">
-                    <h1>Staff</h1>
+                    <PageTitle title={'Staff'}/>
                     <AddBtn text={'Add Staff'} onClick={handleAdd}/>
                 </div>
                 <div className="d-flex justify-content-even align-items-center" id={page.filter}>

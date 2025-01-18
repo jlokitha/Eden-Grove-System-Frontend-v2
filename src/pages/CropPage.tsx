@@ -7,6 +7,7 @@ import {AddBtn} from "../components/buttons/AddBtn.tsx";
 import {useSelector} from "react-redux";
 import {Crop} from "../model/Crop.ts";
 import {CropCard} from "../components/cards/CropCard.tsx";
+import {PageTitle} from "../components/filter/PageTitle.tsx";
 
 interface RootState {
     crop: Crop[];
@@ -43,7 +44,7 @@ export function CropPage() {
     return (
         <div className={page.embeddedPage}>
             <section id={page.filterContainer}>
-                <h1>Crop</h1>
+                <PageTitle title={'Crops'}/>
                 <div
                     className="d-flex justify-content-between align-items-center flex-wrap gap-3"
                 >
