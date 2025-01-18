@@ -8,6 +8,7 @@ import {EquipmentPage} from "./pages/EquipmentPage.tsx";
 import {UserPage} from "./pages/UserPage.tsx";
 import {FieldPage} from "./pages/FieldPage.tsx";
 import {CropPage} from "./pages/CropPage.tsx";
+import {MonitoringLogPage} from "./pages/MonitoringLogPage.tsx";
 
 function App() {
     const routes = createBrowserRouter([
@@ -22,6 +23,7 @@ function App() {
                 {path: '/user', element: <UserPage/>},
                 {path: '/field', element: <FieldPage/>},
                 {path: '/crop', element: <CropPage/>},
+                {path: '/log', element: <MonitoringLogPage/>}
             ]
         },
     ]);
