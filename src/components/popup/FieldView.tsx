@@ -39,20 +39,26 @@ export function FieldView({fieldId, onClose}: FieldViewProps) {
             </div>
             <div>
                 <Carousel image1={field.fieldImage1} image2={field.fieldImage2}/>
-                <div className="wrapper d-flex justify-content-between align-items-center mb-3 selector-wrapper">
+                <div className={`${styles.wrapper} d-flex justify-content-between align-items-center selector-wrapper`}>
                     <DetailContainer label={'Field Name'} value={field.fieldName}/>
                     <DetailContainer label={'Field Size'} value={String(field.fieldSize)}/>
                     <LocationDetailContainer locationString={field.fieldLocation}/>
                 </div>
-                <div className="wrapper d-flex justify-content-between align-items-center mb-3">
-                    <TagContainer label={'Crops'} values={[]}/>
-                </div>
-                <div className="wrapper d-flex justify-content-between align-items-center mb-3">
-                    <TagContainer label={'Staff'} values={[]}/>
-                </div>
-                <div className="wrapper d-flex justify-content-between align-items-center mb-3">
-                    <TagContainer label={'Equipment'} values={[]}/>
-                </div>
+                {field.crops && field.crops.length > 0 && (
+                    <div className="wrapper d-flex justify-content-between align-items-center mb-3">
+                        <TagContainer label={'Crops'} values={[]}/>
+                    </div>
+                )}
+                {field.equipment && field.equipment.length > 0 && (
+                    <div className="wrapper d-flex justify-content-between align-items-center mb-3">
+                        <TagContainer label={'Staff'} values={[]}/>
+                    </div>
+                )}
+                {field.staffs && field.staffs.length > 0 && (
+                    <div className="wrapper d-flex justify-content-between align-items-center mb-3">
+                        <TagContainer label={'Equipment'} values={[]}/>
+                    </div>
+                )}
             </div>
         </section>
     )

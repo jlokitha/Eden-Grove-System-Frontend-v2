@@ -18,11 +18,20 @@ const cropSlice = createSlice({
     name: 'crop',
     initialState,
     reducers: {
-        setCrop: (state, action) => {
+        addCrop: (state, action) => {
             state.push(action.payload);
-        }
+        },
+        updateCrop: (state, action) => {
+            const index = state.findIndex(crop => crop.cropCode === action.payload.id);
+            if (index !== -1) {
+                state[index] = action.payload;
+            }
+        },
+        deleteCrop: (state, action) => {
+            return state.filter(crop => crop.cropCode !== action.payload);
+        },
     }
 })
 
-export const {setCrop} = cropSlice.actions;
+export const {addCrop, updateCrop, deleteCrop} = cropSlice.actions;
 export default cropSlice.reducer;

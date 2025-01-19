@@ -5,7 +5,6 @@ import {ButtonContainer} from "./ButtonContainer.tsx";
 
 interface CropCardProps {
     crop: Crop;
-    index: number;
     viewOnClick: () => void;
     updateOnClick: () => void;
     deleteOnClick: () => void;
@@ -13,7 +12,7 @@ interface CropCardProps {
 
 export function CropCard(props: CropCardProps) {
     return (
-        <div key={props.index} className={styles.card}>
+        <div key={props.crop.cropCode} className={styles.card}>
             <img
                 // src={`data:image/png;base64,${props.crop.cropImage}`}
                 src={props.crop.cropImage}
