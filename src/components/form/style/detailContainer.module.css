@@ -1,0 +1,10 @@
+.detailContainer {
+    width: 100%;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.lbl {
+    color: #727374;
+}

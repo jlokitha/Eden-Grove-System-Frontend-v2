@@ -19,17 +19,21 @@ const staffSlice = createSlice({
     name: 'staff',
     initialState,
     reducers: {
-        setStaff: (state, action) => {
+        addStaff: (state, action) => {
+            const newId = generateNewId(state);
+            state.push({ ...action.payload, id: newId });
+        },
+        updateStaff: (state, action) => {
             const index = state.findIndex(staff => staff.id === action.payload.id);
             if (index !== -1) {
-                state[index] = action.payload;
-            } else {
-                const newId = generateNewId(state);
-                state.push({ ...action.payload, id: newId });
+                state[index] = { ...state[index], ...action.payload };
             }
+        },
+        deleteStaff: (state, action) => {
+            return state.filter(staff => staff.id !== action.payload);
         },
     }
 });
 
-export const { setStaff } = staffSlice.actions;
+export const { addStaff, updateStaff, deleteStaff } = staffSlice.actions;
 export default staffSlice.reducer;

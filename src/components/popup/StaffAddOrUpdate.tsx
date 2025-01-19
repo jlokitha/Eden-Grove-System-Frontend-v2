@@ -13,7 +13,7 @@ import styles from "./style/staffAddOrUpdate.module.css"
 interface AddStaffProps {
     type: "save" | "update";
     staffId?: string;
-    onSubmit: (staff: Staff) => void;
+    onSubmit: (event: React.FormEvent, staff: Staff) => void;
     onClose: () => void;
 }
 
@@ -52,6 +52,7 @@ export function StaffAddOrUpdate(props: AddStaffProps) {
                 setMobile(initialData.mobile);
                 setJoinedDate(initialData.joinedDate);
             }
+            console.log(initialData);
         }
     }, [props.type, props.staffId, staffs]);
 
@@ -69,7 +70,7 @@ export function StaffAddOrUpdate(props: AddStaffProps) {
             postalCode,
             joinedDate || new Date(),
         );
-        props.onSubmit(data);
+        console.log(data);
     };
 
     const genderOptions = [
@@ -99,51 +100,20 @@ export function StaffAddOrUpdate(props: AddStaffProps) {
             <form className={styles.mainContent}>
                 <h3>Details</h3>
                 <div className={`${styles.inputContainer} d-grid`}>
-                    <TextInputField label={'First Name'} onChange={setFirstName}/>
-                    <TextInputField label={'Last Name'} onChange={setLastName}/>
-                    <SelectField label={'Gender'} options={genderOptions} onSelected={setGender}/>
-                    <SelectField label={'Designation'} options={designationOptions} onSelected={setDesignation}/>
-                    <DateInputField label={'Date of Birth'} onChange={setDob}/>
-                    <TextInputField label={'Address'} onChange={setAddress}/>
-                    <NumberInputField label={'Postal Code'} onChange={setPostalCode}/>
-                    <EmailInputField label={'Email'} onChange={setEmail}/>
-                    <NumberInputField label={'Mobile'} onChange={setMobile}/>
-                    <DateInputField label={'Joined Date'} onChange={setJoinedDate}/>
+                    <TextInputField label={'First Name'} value={firstName} onChange={setFirstName}/>
+                    <TextInputField label={'Last Name'} value={lastName} onChange={setLastName}/>
+                    <SelectField label={'Gender'} value={gender} options={genderOptions} onSelected={setGender}/>
+                    <SelectField label={'Designation'} value={designation} options={designationOptions} onSelected={setDesignation}/>
+                    <DateInputField label={'Date of Birth'} value={dob} onChange={setDob}/>
+                    <TextInputField label={'Address'} value={address} onChange={setAddress}/>
+                    <NumberInputField label={'Postal Code'} value={postalCode} onChange={setPostalCode}/>
+                    <EmailInputField label={'Email'} value={email} onChange={setEmail}/>
+                    <NumberInputField label={'Mobile'} value={mobile} onChange={setMobile}/>
+                    <DateInputField label={'Joined Date'} value={joinedDate} onChange={setJoinedDate}/>
                 </div>
 
                 <ButtonContainer type={props.type} onClick={handleSubmit}/>
             </form>
         </div>
     )
-
-    // return (
-    //     <div id={styles.staffAddOrUpdate}>
-    //         <TitleContainer title={props.type === 'save' ? 'Add Staff' : 'Update Staff'} onClose={props.onClose}/>
-    //         <form className={styles.mainContent}>
-    //             <h3>Details</h3>
-    //             <div className={`${styles.wrapper} d-flex justify-content-between align-items-center`}>
-    //                 <TextInputField label={'First Name'} onChange={setFirstName}/>
-    //                 <TextInputField label={'Last Name'} onChange={setLastName}/>
-    //             </div>
-    //             <div className={`${styles.wrapper} d-flex justify-content-between align-items-center`}>
-    //                 <SelectField label={'Gender'} options={genderOptions} onSelected={setGender}/>
-    //                 <SelectField label={'Designation'} options={designationOptions} onSelected={setDesignation}/>
-    //             </div>
-    //             <div className={`${styles.wrapper} d-flex justify-content-between align-items-center`}>
-    //                 <DateInputField label={'Date of Birth'} onChange={setDob}/>
-    //                 <TextInputField label={'Address'} onChange={setAddress}/>
-    //             </div>
-    //             <div className={`${styles.wrapper} d-flex justify-content-between align-items-center`}>
-    //                 <NumberInputField label={'Postal Code'} onChange={setPostalCode}/>
-    //                 <EmailInputField label={'Email'} onChange={setEmail}/>
-    //             </div>
-    //             <div className={`${styles.wrapper} d-flex justify-content-between align-items-center`}>
-    //                 <NumberInputField label={'Mobile'} onChange={setMobile}/>
-    //                 <DateInputField label={'Joined Date'} onChange={setJoinedDate}/>
-    //             </div>
-    //
-    //             <ButtonContainer type={props.type} onClick={handleSubmit}/>
-    //         </form>
-    //     </div>
-    // )
 }
