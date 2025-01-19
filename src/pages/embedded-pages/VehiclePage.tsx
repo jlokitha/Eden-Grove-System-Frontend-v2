@@ -5,12 +5,17 @@ import {SearchComponent} from "../../components/filter/SearchComponent.tsx";
 import {useState} from "react";
 import {SelectorComponent} from "../../components/filter/SelectorComponent.tsx";
 import page from "./styles/embeddedPage.module.css"
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Vehicle} from "../../model/Vehicle.ts";
-import {ViewRowBtn} from "../../components/buttons/ViewRowBtn.tsx";
-import {UpdateRowBtn} from "../../components/buttons/UpdateRowBtn.tsx";
-import {DeleteRowBtn} from "../../components/buttons/DeleteRowBtn.tsx";
+import {ViewRowBtn} from "../../components/table/ViewRowBtn.tsx";
+import {UpdateRowBtn} from "../../components/table/UpdateRowBtn.tsx";
+import {DeleteRowBtn} from "../../components/table/DeleteRowBtn.tsx";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
+import {VehicleAddOrUpdate} from "../../components/popup/VehicleAddOrUpdate.tsx";
+import {VehicleView} from "../../components/popup/VehicleView.tsx";
+import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
+import {deleteVehicle} from "../../reducers/VehicleReducer.ts";
+import {TableAvailabilityTag} from "../../components/table/TableAvailabilityTag.tsx";
 
 interface RootState {
     vehicle: Vehicle[];
@@ -20,7 +25,14 @@ export function VehiclePage() {
     const [category, setCategory] = useState('');
     const [status, setStatus] = useState('');
 
+    const [openPopup, setOpenPopup] = useState(false);
+    const [popupType, setPopupType] = useState<"save" | "update">("save");
+    const [viewPopup, setViewPopup] = useState(false);
+    const [deletePopup, setDeletePopup] = useState(false);
+    const [selectedVehicleId, setSelectedVehicleId] = useState<string | undefined>(undefined);
+
     const vehicles = useSelector((state: RootState) => state.vehicle);
+    const dispatch = useDispatch();
 
     const statusOptions = [
         {value: "ALL", text: "All"},
@@ -30,12 +42,20 @@ export function VehiclePage() {
         {value: "UNDER_MAINTENANCE", text: "Under Maintenance"},
     ];
 
+    const handleSubmit = () => {
+        console.log('Submit Vehicle');
+    }
+
     const handleAdd = () => {
-        console.log('Add Vehicle');
+        setPopupType("save");
+        setSelectedVehicleId(undefined);
+        setOpenPopup(true);
     }
 
     const handleUpdate = (id: string) => {
-        console.log(`Update vehicle with ID: ${id}`);
+        setPopupType("update");
+        setSelectedVehicleId(id);
+        setOpenPopup(true);
     }
 
     const handleSearch = () => {
@@ -47,12 +67,25 @@ export function VehiclePage() {
     }
 
     const handleView = (id: string) => {
-        console.log(`View vehicle with ID: ${id}`);
+        setSelectedVehicleId(id);
+        setViewPopup(true);
     };
 
     const handleDelete = (id: string) => {
-        console.log(`Delete vehicle with ID: ${id}`);
+        setSelectedVehicleId(id);
+        setDeletePopup(true);
     };
+
+    const handleDeleteConfirm = () => {
+        if (selectedVehicleId) {
+            dispatch(deleteVehicle(selectedVehicleId));
+        }
+        setDeletePopup(false);
+    }
+
+    const handleDeleteCancel = () => {
+        setDeletePopup(false);
+    }
 
     return (
         <div className={page.embeddedPage}>
@@ -89,7 +122,9 @@ export function VehiclePage() {
                                 <td>{vehicle.licensePlateNo}</td>
                                 <td>{vehicle.category}</td>
                                 <td>{vehicle.fuelType}</td>
-                                <td>{vehicle.status}</td>
+                                <td className="d-flex justify-content-center">
+                                    <TableAvailabilityTag statusText={vehicle.status}/>
+                                </td>
                                 <td>
                                     <div className={`${page.actionContainer} d-flex`}>
                                         <ViewRowBtn onClick={() => handleView(vehicle.vehicleCode)}/>
@@ -103,6 +138,16 @@ export function VehiclePage() {
                     </table>
                 </div>
             </section>
+
+            {openPopup && (
+                <VehicleAddOrUpdate type={popupType} onSubmit={handleSubmit} onClose={() => setOpenPopup(false)}/>
+            )}
+            {viewPopup && (
+                <VehicleView vehicleId={selectedVehicleId!} onClose={() => setViewPopup(false)}/>
+            )}
+            {deletePopup && (
+                <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+            )}
         </div>
     );
 }

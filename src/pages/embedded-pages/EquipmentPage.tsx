@@ -6,9 +6,9 @@ import {SelectorComponent} from "../../components/filter/SelectorComponent.tsx";
 import {useState} from "react";
 import {useSelector} from "react-redux";
 import {Equipment} from "../../model/Euipment.ts";
-import {ViewRowBtn} from "../../components/buttons/ViewRowBtn.tsx";
-import {UpdateRowBtn} from "../../components/buttons/UpdateRowBtn.tsx";
-import {DeleteRowBtn} from "../../components/buttons/DeleteRowBtn.tsx";
+import {ViewRowBtn} from "../../components/table/ViewRowBtn.tsx";
+import {UpdateRowBtn} from "../../components/table/UpdateRowBtn.tsx";
+import {DeleteRowBtn} from "../../components/table/DeleteRowBtn.tsx";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
 
 interface RootState {
