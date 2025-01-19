@@ -4,13 +4,15 @@ import {SearchButton} from "../../components/filter/SearchButton.tsx";
 import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
 import {SelectorComponent} from "../../components/filter/SelectorComponent.tsx";
 import {useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Equipment} from "../../model/Euipment.ts";
 import {ViewRowBtn} from "../../components/table/ViewRowBtn.tsx";
 import {UpdateRowBtn} from "../../components/table/UpdateRowBtn.tsx";
 import {DeleteRowBtn} from "../../components/table/DeleteRowBtn.tsx";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
 import {TableAvailabilityTag} from "../../components/table/TableAvailabilityTag.tsx";
+import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
+import {deleteEquipment} from "../../reducers/EquipmentReducer.ts";
 
 interface RootState {
     equipment: Equipment[];
@@ -20,7 +22,11 @@ export function EquipmentPage() {
     const [type, setType] = useState('');
     const [status, setStatus] = useState('');
 
+    const [deletePopup, setDeletePopup] = useState(false);
+    const [selectedEquipmentId, setSelectedEquipmentId] = useState<string | undefined>(undefined);
+
     const equipments = useSelector((state: RootState) => state.equipment);
+    const dispatch = useDispatch();
 
     const typeOptions = [
         {value: "ALL", text: "All"},
@@ -59,8 +65,20 @@ export function EquipmentPage() {
     };
 
     const handleDelete = (id: string) => {
-        console.log(`Delete equipment with ID: ${id}`);
+        setSelectedEquipmentId(id);
+        setDeletePopup(true);
     };
+
+    const handleDeleteConfirm = () => {
+        if (selectedEquipmentId) {
+            dispatch(deleteEquipment(selectedEquipmentId));
+        }
+        setDeletePopup(false);
+    }
+
+    const handleDeleteCancel = () => {
+        setDeletePopup(false);
+    }
 
     return (
         <div className={page.embeddedPage}>
@@ -111,6 +129,10 @@ export function EquipmentPage() {
                     </table>
                 </div>
             </section>
+
+            {deletePopup && (
+                <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+            )}
         </div>
     )
 }

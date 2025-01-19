@@ -2,10 +2,12 @@ import page from "./styles/embeddedPage.module.css"
 import {useState} from "react";
 import {SelectorComponent} from "../../components/filter/SelectorComponent.tsx";
 import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {User} from "../../model/User.ts";
 import {DeleteRowBtn} from "../../components/table/DeleteRowBtn.tsx";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
+import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
+import {deleteUser} from "../../reducers/UserReducer.ts";
 
 interface RootState {
     user: User[];
@@ -14,7 +16,11 @@ interface RootState {
 export function UserPage() {
     const [role, setRole] = useState('');
 
+    const [deletePopup, setDeletePopup] = useState(false);
+    const [selectedUserId, setSelectedUserId] = useState<string | undefined>(undefined);
+
     const users = useSelector((state: RootState) => state.user);
+    const dispatch = useDispatch();
 
     const roleOptions = [
         {value: "ALL", text: "All"},
@@ -36,8 +42,20 @@ export function UserPage() {
         console.log('Clear Filter');
     }
     const handleDelete = (id: string) => {
-        console.log(`Delete user with ID: ${id}`);
+        setSelectedUserId(id);
+        setDeletePopup(true);
     };
+
+    const handleDeleteConfirm = () => {
+        if (selectedUserId) {
+            dispatch(deleteUser(selectedUserId));
+        }
+        setDeletePopup(false);
+    }
+
+    const handleDeleteCancel = () => {
+        setDeletePopup(false);
+    }
 
     return (
         <div className={page.embeddedPage}>
@@ -81,6 +99,10 @@ export function UserPage() {
                     </table>
                 </div>
             </section>
+
+            {deletePopup && (
+                <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+            )}
         </div>
     )
 }

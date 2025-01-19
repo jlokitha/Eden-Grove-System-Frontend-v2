@@ -88,7 +88,7 @@ To install and run the System, follow these steps:
 
 To view screenshots of the current version of the project, refer to the following Google Doc:
 
-[Screenshots](https://drive.google.com/drive/folders/13cHEHBdSbI64dAOnOt-66oaW8xgPAgYp?usp=sharing)
+[Screenshots](https://drive.google.com/drive/folders/1Qydrrr4Rxsh9OHFVgY50WjUd3oIIcqsD?usp=sharing)
 
 ## Previous Version
 
