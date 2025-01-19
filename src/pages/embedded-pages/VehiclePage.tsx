@@ -1,16 +1,16 @@
-import {AddBtn} from "../components/buttons/AddBtn.tsx";
-import {ClearFilterButton} from "../components/filter/ClearFilterButton.tsx";
-import {SearchButton} from "../components/filter/SearchButton.tsx";
-import {SearchComponent} from "../components/filter/SearchComponent.tsx";
+import {AddBtn} from "../../components/buttons/AddBtn.tsx";
+import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
+import {SearchButton} from "../../components/filter/SearchButton.tsx";
+import {SearchComponent} from "../../components/filter/SearchComponent.tsx";
 import {useState} from "react";
-import {SelectorComponent} from "../components/filter/SelectorComponent.tsx";
+import {SelectorComponent} from "../../components/filter/SelectorComponent.tsx";
 import page from "./styles/embeddedPage.module.css"
 import {useSelector} from "react-redux";
-import {Vehicle} from "../model/Vehicle.ts";
-import {ViewRowBtn} from "../components/buttons/ViewRowBtn.tsx";
-import {UpdateRowBtn} from "../components/buttons/UpdateRowBtn.tsx";
-import {DeleteRowBtn} from "../components/buttons/DeleteRowBtn.tsx";
-import {PageTitle} from "../components/filter/PageTitle.tsx";
+import {Vehicle} from "../../model/Vehicle.ts";
+import {ViewRowBtn} from "../../components/buttons/ViewRowBtn.tsx";
+import {UpdateRowBtn} from "../../components/buttons/UpdateRowBtn.tsx";
+import {DeleteRowBtn} from "../../components/buttons/DeleteRowBtn.tsx";
+import {PageTitle} from "../../components/filter/PageTitle.tsx";
 
 interface RootState {
     vehicle: Vehicle[];

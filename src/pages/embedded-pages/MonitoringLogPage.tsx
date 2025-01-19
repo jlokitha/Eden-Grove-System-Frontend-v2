@@ -1,14 +1,14 @@
 import page from "./styles/embeddedPage.module.css";
-import {SearchComponent} from "../components/filter/SearchComponent.tsx";
+import {SearchComponent} from "../../components/filter/SearchComponent.tsx";
 import {useState} from "react";
-import {DateFieldComponent} from "../components/filter/DateFieldComponent.tsx";
-import {SearchButton} from "../components/filter/SearchButton.tsx";
-import {ClearFilterButton} from "../components/filter/ClearFilterButton.tsx";
-import {AddBtn} from "../components/buttons/AddBtn.tsx";
+import {DateFieldComponent} from "../../components/filter/DateFieldComponent.tsx";
+import {SearchButton} from "../../components/filter/SearchButton.tsx";
+import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
+import {AddBtn} from "../../components/buttons/AddBtn.tsx";
 import {useSelector} from "react-redux";
-import {MonitoringLog} from "../model/MonitoringLog.ts";
-import {LogCard} from "../components/cards/LogCard.tsx";
-import {PageTitle} from "../components/filter/PageTitle.tsx";
+import {MonitoringLog} from "../../model/MonitoringLog.ts";
+import {LogCard} from "../../components/cards/LogCard.tsx";
+import {PageTitle} from "../../components/filter/PageTitle.tsx";
 
 interface RootState {
     log: MonitoringLog[];

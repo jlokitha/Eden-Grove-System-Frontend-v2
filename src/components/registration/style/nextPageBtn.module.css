@@ -1,0 +1,17 @@
+.nextButton {
+    width: 140px;
+    height: 45px;
+    border: none;
+    background: #139547;
+    font-size: 0.9rem;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.nextButton:hover {
+    opacity: 0.8;
+}
+
+.nextButton img {
+    margin-left: 3px;
+}

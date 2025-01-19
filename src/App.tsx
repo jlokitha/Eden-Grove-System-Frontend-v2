@@ -1,37 +1,44 @@
 import './App.css'
-import {RootLayout} from "./components/RootLayout.tsx";
+import {MainRootLayout} from "./components/MainRootLayout.tsx";
 import {createBrowserRouter, RouterProvider} from "react-router";
-import {StaffPage} from "./pages/StaffPage.tsx";
-import {VehiclePage} from "./pages/VehiclePage.tsx";
-import {EquipmentPage} from "./pages/EquipmentPage.tsx";
-import {UserPage} from "./pages/UserPage.tsx";
-import {FieldPage} from "./pages/FieldPage.tsx";
-import {CropPage} from "./pages/CropPage.tsx";
-import {MonitoringLogPage} from "./pages/MonitoringLogPage.tsx";
-import {DashboardPage} from "./pages/DashboardPage.tsx";
+import {StaffPage} from "./pages/embedded-pages/StaffPage.tsx";
+import {VehiclePage} from "./pages/embedded-pages/VehiclePage.tsx";
+import {EquipmentPage} from "./pages/embedded-pages/EquipmentPage.tsx";
+import {UserPage} from "./pages/embedded-pages/UserPage.tsx";
+import {FieldPage} from "./pages/embedded-pages/FieldPage.tsx";
+import {CropPage} from "./pages/embedded-pages/CropPage.tsx";
+import {MonitoringLogPage} from "./pages/embedded-pages/MonitoringLogPage.tsx";
+import {DashboardPage} from "./pages/embedded-pages/DashboardPage.tsx";
+import {SignInPage} from "./pages/AuthPages/SignInPage.tsx";
+import {AuthRootLayout} from "./components/registration/AuthRootLayout.tsx";
 
 function App() {
     const routes = createBrowserRouter([
         {
-            path: '',
-            element: <RootLayout/>,
+            path: '/home',
+            element: <MainRootLayout/>,
             children: [
                 {path: '', element: <DashboardPage/>},
-                {path: '/staff', element: <StaffPage/>},
-                {path: '/vehicle', element: <VehiclePage/>},
-                {path: '/equipment', element: <EquipmentPage/>},
-                {path: '/user', element: <UserPage/>},
-                {path: '/field', element: <FieldPage/>},
-                {path: '/crop', element: <CropPage/>},
-                {path: '/log', element: <MonitoringLogPage/>}
+                {path: 'staff', element: <StaffPage/>},
+                {path: 'vehicle', element: <VehiclePage/>},
+                {path: 'equipment', element: <EquipmentPage/>},
+                {path: 'user', element: <UserPage/>},
+                {path: 'field', element: <FieldPage/>},
+                {path: 'crop', element: <CropPage/>},
+                {path: 'log', element: <MonitoringLogPage/>}
             ]
         },
+        {
+            path: '/',
+            element: <AuthRootLayout/>,
+            children: [
+                {path: '', element: <SignInPage/>},
+            ]
+        }
     ]);
 
     return (
-        <>
-            <RouterProvider router={routes}/>
-        </>
+        <RouterProvider router={routes}/>
     )
 }
 

@@ -1,14 +1,14 @@
 import page from "./styles/embeddedPage.module.css"
-import {AddBtn} from "../components/buttons/AddBtn.tsx";
+import {AddBtn} from "../../components/buttons/AddBtn.tsx";
 import {useState} from "react";
-import {SearchButton} from "../components/filter/SearchButton.tsx";
-import {ClearFilterButton} from "../components/filter/ClearFilterButton.tsx";
-import {SearchComponent} from "../components/filter/SearchComponent.tsx";
-import {NumberFieldComponent} from "../components/filter/NumberFieldComponent.tsx";
+import {SearchButton} from "../../components/filter/SearchButton.tsx";
+import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
+import {SearchComponent} from "../../components/filter/SearchComponent.tsx";
+import {NumberFieldComponent} from "../../components/filter/NumberFieldComponent.tsx";
 import {useSelector} from "react-redux";
-import {Field} from "../model/Field.ts";
-import {FieldCard} from "../components/cards/FieldCard.tsx";
-import {PageTitle} from "../components/filter/PageTitle.tsx";
+import {Field} from "../../model/Field.ts";
+import {FieldCard} from "../../components/cards/FieldCard.tsx";
+import {PageTitle} from "../../components/filter/PageTitle.tsx";
 
 interface RootState {
     field: Field[];

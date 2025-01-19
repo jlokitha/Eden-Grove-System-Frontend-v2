@@ -1,13 +1,13 @@
 import page from "./styles/embeddedPage.module.css";
-import {SearchComponent} from "../components/filter/SearchComponent.tsx";
+import {SearchComponent} from "../../components/filter/SearchComponent.tsx";
 import {useState} from "react";
-import {SearchButton} from "../components/filter/SearchButton.tsx";
-import {ClearFilterButton} from "../components/filter/ClearFilterButton.tsx";
-import {AddBtn} from "../components/buttons/AddBtn.tsx";
+import {SearchButton} from "../../components/filter/SearchButton.tsx";
+import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
+import {AddBtn} from "../../components/buttons/AddBtn.tsx";
 import {useSelector} from "react-redux";
-import {Crop} from "../model/Crop.ts";
-import {CropCard} from "../components/cards/CropCard.tsx";
-import {PageTitle} from "../components/filter/PageTitle.tsx";
+import {Crop} from "../../model/Crop.ts";
+import {CropCard} from "../../components/cards/CropCard.tsx";
+import {PageTitle} from "../../components/filter/PageTitle.tsx";
 
 interface RootState {
     crop: Crop[];
