@@ -32,6 +32,7 @@ export function VehicleAddOrUpdate(props: AddVehicleProps) {
     const vehicles = useSelector((state: RootState) => state.vehicle);
 
     useEffect(() => {
+        console.log('VehicleAddOrUpdate: useEffect', props.vehicleId);
         if (props.type === "update" && props.vehicleId) {
             const initialData = vehicles.find((vehicle: Vehicle) => vehicle.vehicleCode === props.vehicleId);
 
@@ -41,6 +42,7 @@ export function VehicleAddOrUpdate(props: AddVehicleProps) {
                 setFuelType(initialData.fuelType);
                 setStatus(initialData.status);
                 setRemark(initialData.remarks);
+                console.log('VehicleAddOrUpdate: initialData', initialData);
             }
         }
         
