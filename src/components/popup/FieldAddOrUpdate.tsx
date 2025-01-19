@@ -51,21 +51,24 @@ export function FieldAddOrUpdate(props: FieldAddOrUpdateProps) {
             <form className={styles.mainContent}>
                 <h3>Details</h3>
                 <div className={`${styles.wrapper} d-flex justify-content-between align-items-center`}>
-                    <ImageInputContainer onImageSelect={handleImage1Select} />
-                    <ImageInputContainer onImageSelect={handleImage2Select} />
+                    <ImageInputContainer onImageSelect={handleImage1Select}/>
+                    <ImageInputContainer onImageSelect={handleImage2Select}/>
                 </div>
                 <div className={`${styles.wrapper} d-flex justify-content-between align-items-center`}>
                     <TextInputField label={'Field Name'} value={fieldName} onChange={setFieldName}/>
                     <TextInputField label={'Field Size (Sq.mt)'} value={fieldSize} onChange={setFieldSize}/>
                 </div>
                 <div className={`${styles.wrapper} d-flex justify-content-between align-items-center`}>
-                    <TextInputField label={'Field Location (Please enter google map web URL)'} value={fieldLocation} onChange={setFieldLocation}/>
+                    <TextInputField label={'Field Location (Please enter google map web URL)'} value={fieldLocation}
+                                    onChange={setFieldLocation}/>
                 </div>
 
                 <h3>Optional</h3>
                 <div className={`${styles.wrapper} d-flex justify-content-between align-items-center`}>
-                    <SelectFieldWithCount label={'Staff'} secondLabel={'Staff'} options={[]} selectedValues={staff} onChange={setStaff}/>
-                    <SelectFieldWithCount label={'Equipment'} secondLabel={'Equipment'} options={[]} selectedValues={equipment} onChange={setEquipment}/>
+                    <SelectFieldWithCount label={'Staff'} secondLabel={'Staff'} options={[]} selectedValues={staff}
+                                          onChange={setStaff}/>
+                    <SelectFieldWithCount label={'Equipment'} secondLabel={'Equipment'} options={[]}
+                                          selectedValues={equipment} onChange={setEquipment}/>
                 </div>
 
                 <ButtonContainer type={props.type} onClick={handleSubmit}/>

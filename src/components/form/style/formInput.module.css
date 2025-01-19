@@ -9,6 +9,7 @@
 
 .input, .select {
     width: 100%;
+    min-width: 300px;
     border: none;
     border-radius: 0;
     padding: 10px;
