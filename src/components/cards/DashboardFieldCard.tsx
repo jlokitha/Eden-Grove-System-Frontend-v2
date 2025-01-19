@@ -1,6 +1,7 @@
 import styles from "./style/horizontalCard.module.css"
 
 interface DashboardFieldCardProps {
+    key: string;
     field: {
         fCode: string;
         fieldName: string;

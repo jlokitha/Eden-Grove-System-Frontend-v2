@@ -168,7 +168,7 @@ export function DashboardPage() {
                     <h2 className="text-center">Field Details</h2>
 
                     {fields && fields.map((field) => (
-                        <DashboardFieldCard field={field}/>
+                        <DashboardFieldCard key={field.fCode} field={field}/>
                     ))}
                 </div>
 
@@ -181,7 +181,7 @@ export function DashboardPage() {
                     <h2 className="text-center">Recent Logs</h2>
 
                     {logs && logs.map((log) => (
-                        <DashboardLogCard log={log}/>
+                        <DashboardLogCard key={log.logCode} log={log}/>
                     ))}
                 </div>
             </section>

@@ -1,16 +1,16 @@
-import {FormLogo} from "../../components/registration/FormLogo.tsx";
-import {TitleContainer} from "../../components/registration/TitleContainer.tsx";
+import { FormLogo } from "../../components/registration/FormLogo.tsx";
+import { TitleContainer } from "../../components/registration/TitleContainer.tsx";
 import styles from "./style/authPages.module.css";
-import {PreviousPageBtn} from "../../components/registration/PreviousPageBtn.tsx";
-import {NextPageBtn} from "../../components/registration/NextPageBtn.tsx";
-import {useNavigate} from "react-router-dom";
-import {useState, useRef} from "react";
-import {OtpNumberField} from "../../components/registration/OtpNumberField.tsx";
+import { PreviousPageBtn } from "../../components/registration/PreviousPageBtn.tsx";
+import { NextPageBtn } from "../../components/registration/NextPageBtn.tsx";
+import { useNavigate } from "react-router-dom";
+import { OtpNumberField } from "../../components/registration/OtpNumberField.tsx";
+import { useOtp } from "../../store/OtpProvider.tsx";
+import {useRef} from "react";
 
 export function OtpVerification() {
-    const [otp, setOtp] = useState<string[]>(Array(6).fill(''));
+    const { otp, setOtp, otpAction } = useOtp();
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-
     const navigation = useNavigate();
 
     const handleChange = (value: string, index: number) => {
@@ -19,7 +19,6 @@ export function OtpVerification() {
             newOtp[index] = value;
             setOtp(newOtp);
 
-            // Focus on the next input field
             if (value && index < inputRefs.current.length - 1) {
                 inputRefs.current[index + 1]?.focus();
             }
@@ -32,22 +31,28 @@ export function OtpVerification() {
         }
     };
 
-    const handleSubmit = () => {
-        console.log('OTP Verification:', otp.join(''));
-    }
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        console.log(`Verifying OTP: ${otp.join('')}`);
+        if (otpAction === 'signUp') {
+            navigation('/auth/sign-up');
+        } else if (otpAction === 'passwordReset') {
+            navigation('/auth/password-reset');
+        }
+    };
 
     const handlePrevious = () => {
-        navigation('/otp-request');
-    }
+        navigation('/auth/otp-request');
+    };
 
     const handleResend = () => {
         console.log('Resending OTP');
-    }
+    };
 
     return (
         <div className="d-flex flex-column align-items-center" id={styles.inputContainer}>
-            <FormLogo/>
-            <TitleContainer title={'OTP Verification'} subtitle={'Enter the 6 digit code sent to your email'}/>
+            <FormLogo />
+            <TitleContainer title={'OTP Verification'} subtitle={'Enter the 6 digit code sent to your email'} />
 
             <form>
                 <div className="d-flex align-items-center">
@@ -64,8 +69,8 @@ export function OtpVerification() {
                 </div>
 
                 <div className="d-flex justify-content-end align-items-center" id={styles.buttonContainer}>
-                    <PreviousPageBtn onClick={handlePrevious} text={'Back'}/>
-                    <NextPageBtn text={'Next'} onClick={handleSubmit}/>
+                    <PreviousPageBtn onClick={handlePrevious} text={'Back'} />
+                    <NextPageBtn text={'Next'} onClick={handleSubmit} />
                 </div>
             </form>
 
@@ -74,5 +79,5 @@ export function OtpVerification() {
                 <a onClick={handleResend}>Resend OTP</a>
             </p>
         </div>
-    )
+    );
 }

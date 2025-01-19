@@ -14,11 +14,11 @@ export function OtpRequestPage() {
 
     const handleSubmit = () => {
         console.log(`Requesting OTP for email: ${email}`);
-        navigation('/otp-verification');
+        navigation('/auth/otp-verification');
     }
 
     const handlePrevious = () => {
-        navigation('/');
+        navigation('/auth/sign-in');
     }
 
     return (

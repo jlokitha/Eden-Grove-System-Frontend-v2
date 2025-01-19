@@ -13,11 +13,12 @@ import {SignInPage} from "./pages/AuthPages/SignInPage.tsx";
 import {AuthRootLayout} from "./components/registration/AuthRootLayout.tsx";
 import {OtpRequestPage} from "./pages/AuthPages/OtpRequestPage.tsx";
 import {OtpVerification} from "./pages/AuthPages/OtpVerification.tsx";
+import {SignUpPage} from "./pages/AuthPages/SignUpPage.tsx";
 
 function App() {
     const routes = createBrowserRouter([
         {
-            path: '/home',
+            path: '/',
             element: <MainRootLayout/>,
             children: [
                 {path: '', element: <DashboardPage/>},
@@ -31,12 +32,13 @@ function App() {
             ]
         },
         {
-            path: '/',
+            path: '/auth',
             element: <AuthRootLayout/>,
             children: [
-                {path: '', element: <SignInPage/>},
+                {path: 'sign-in', element: <SignInPage/>},
                 {path: 'otp-request', element: <OtpRequestPage/>},
-                {path: 'otp-verification', element: <OtpVerification/>}
+                {path: 'otp-verification', element: <OtpVerification/>},
+                {path: 'sign-up', element: <SignUpPage/>}
             ]
         }
     ]);

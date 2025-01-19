@@ -1,7 +1,7 @@
 import styles from './style/nextPageBtn.module.css';
 
 interface NextPageBtnProps {
-    onClick: () => void;
+    onClick: (event: React. FormEvent) => void;
     text: string;
 }
 
