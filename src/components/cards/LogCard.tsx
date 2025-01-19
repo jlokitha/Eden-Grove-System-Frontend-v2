@@ -14,7 +14,8 @@ export function LogCard(props: LogCardProps) {
     return (
         <div key={props.index} className={styles.card}>
             <img
-                src={`data:image/png;base64,${props.log.observedImage}`}
+                // src={`data:image/png;base64,${props.log.observedImage}`}
+                src={props.log.observedImage}
                 className={styles.cardImgTop}
                 alt="Log Image"
             />

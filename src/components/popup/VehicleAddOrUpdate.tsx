@@ -1,6 +1,6 @@
 import {TitleContainer} from "../form/TitleContainer.tsx";
 import {Staff} from "../../model/Staff.ts";
-import styles from "./style/staffAddOrUpdate.module.css";
+import styles from "./style/addOrUpdate.module.css";
 import {TextInputField} from "../form/TextInputField.tsx";
 import {useEffect, useState} from "react";
 import {SelectField} from "../form/SelectField.tsx";
@@ -66,7 +66,7 @@ export function VehicleAddOrUpdate(props: AddVehicleProps) {
     }
 
     return (
-        <section id={styles.staffAddOrUpdate}>
+        <section id={styles.addOrUpdate}>
             <TitleContainer title={props.type === 'save' ? 'Add Vehicle' : 'Update Vehicle'} onClose={props.onClose}/>
 
             <form className={styles.mainContent}>

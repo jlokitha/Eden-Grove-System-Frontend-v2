@@ -16,7 +16,8 @@ export function FieldCard(props: FieldCardProps) {
     return (
         <div key={props.index} className={styles.card}>
             <img
-                src={`data:image/png;base64,${props.field.fieldImage1}`}
+                // src={`data:image/png;base64,${props.field.fieldImage1}`}
+                src={props.field.fieldImage1}
                 className={styles.cardImgTop}
                 alt="Field Image"
             />

@@ -7,5 +7,8 @@ export class Field {
         public fieldImage1: string,
         public fieldImage2: string,
         public status: string,
+        // public staffs: Staff[],
+        // public crops: Crop[],
+        // public equipment: Equipment[]
     ) {}
 }

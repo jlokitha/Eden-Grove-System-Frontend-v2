@@ -5,10 +5,14 @@ import {SearchButton} from "../../components/filter/SearchButton.tsx";
 import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
 import {SearchComponent} from "../../components/filter/SearchComponent.tsx";
 import {NumberFieldComponent} from "../../components/filter/NumberFieldComponent.tsx";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Field} from "../../model/Field.ts";
 import {FieldCard} from "../../components/cards/FieldCard.tsx";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
+import {addField, deleteField, updateField} from "../../reducers/FieldReducer.ts";
+import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
+import {FieldAddOrUpdate} from "../../components/popup/FieldAddOrUpdate.tsx";
+import {FieldView} from "../../components/popup/FieldView.tsx";
 
 interface RootState {
     field: Field[];
@@ -19,13 +23,35 @@ export function FieldPage() {
     const [fromSize, setFromSize] = useState('');
     const [toSize, setToSize] = useState('');
 
+    const [openPopup, setOpenPopup] = useState(false);
+    const [popupType, setPopupType] = useState<"save" | "update">("save");
+    const [viewPopup, setViewPopup] = useState(false);
+    const [deletePopup, setDeletePopup] = useState(false);
+    const [selectedFieldId, setSelectedFieldId] = useState<string | undefined>(undefined);
+
     const fields = useSelector((state: RootState) => state.field);
+    const dispatch = useDispatch();
+
+    const handleSubmit = (event: React.FormEvent, field: Field) => {
+        event.preventDefault();
+        if (popupType === "save") {
+            dispatch(addField(field));
+        } else if (popupType === "update") {
+            dispatch(updateField(field));
+        }
+        setOpenPopup(false);
+    };
 
     const handleAdd = () => {
+        setPopupType("save");
+        setSelectedFieldId(undefined);
+        setOpenPopup(true);
     };
 
     const handleUpdate = (id: string) => {
-        console.log(`Update Field with ID: ${id}`);
+        setPopupType("update");
+        setSelectedFieldId(id);
+        setOpenPopup(true);
     };
 
     const handleSearch = () => {
@@ -37,12 +63,25 @@ export function FieldPage() {
     }
 
     const handleView = (id: string) => {
-        console.log(`View Field with ID: ${id}`);
+        setSelectedFieldId(id);
+        setViewPopup(true);
     };
 
     const handleDelete = (id: string) => {
-        console.log(`Delete Field with ID: ${id}`);
+        setSelectedFieldId(id);
+        setDeletePopup(true);
     };
+
+    const handleDeleteConfirm = () => {
+        if (selectedFieldId) {
+            dispatch(deleteField(selectedFieldId));
+        }
+        setDeletePopup(false);
+    }
+
+    const handleDeleteCancel = () => {
+        setDeletePopup(false);
+    }
 
     return (
         <div className={page.embeddedPage}>
@@ -71,6 +110,21 @@ export function FieldPage() {
                     />
                 ))}
             </section>
+
+            {openPopup && (
+                <FieldAddOrUpdate
+                    fieldId={selectedFieldId}
+                    onClose={() => setOpenPopup(false)}
+                    onSubmit={handleSubmit}
+                    type={popupType}
+                />
+            )}
+            {viewPopup && (
+                <FieldView fieldId={selectedFieldId!} onClose={() => setViewPopup(false)}/>
+            )}
+            {deletePopup && (
+                <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+            )}
         </div>
     )
 }

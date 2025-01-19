@@ -1,0 +1,11 @@
+#fieldViewPopup {
+    min-width: 600px;
+    max-width: 600px;
+    max-height: 530px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+#fieldViewPopup::-webkit-scrollbar {
+    display: none;
+}

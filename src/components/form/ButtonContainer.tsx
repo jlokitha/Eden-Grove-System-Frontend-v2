@@ -2,7 +2,7 @@ import styles from "./style/buttonContainer.module.css"
 
 interface ButtonContainerProps {
     type: string;
-    onClick: () => void;
+    onClick: (event: React.FormEvent) => void;
 }
 
 export function ButtonContainer(props: ButtonContainerProps) {
