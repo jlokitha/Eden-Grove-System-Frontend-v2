@@ -5,6 +5,7 @@
 
 form {
     width: 100%;
+    margin-bottom: auto;
 }
 
 #buttonContainer {
@@ -18,7 +19,7 @@ form {
     margin-top: auto;
 }
 
-#inputContainer p {
+#inputContainer  p {
     font-size: 0.7rem;
     color: #727374;
     line-height: 1rem;

@@ -8,3 +8,8 @@
     margin-bottom: 20px;
     font-size: 1.8rem;
 }
+
+#titleContainer p {
+    max-width: 300px;
+    word-wrap: break-word;
+}

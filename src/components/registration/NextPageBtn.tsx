@@ -9,7 +9,7 @@ export function NextPageBtn({onClick, text}: NextPageBtnProps) {
     return (
         <button
             className={`${styles.nextButton} d-flex justify-content-center align-items-center`}
-            type={'button'}
+            type={'submit'}
             onClick={onClick}
         >
             <div>

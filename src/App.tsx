@@ -11,6 +11,7 @@ import {MonitoringLogPage} from "./pages/embedded-pages/MonitoringLogPage.tsx";
 import {DashboardPage} from "./pages/embedded-pages/DashboardPage.tsx";
 import {SignInPage} from "./pages/AuthPages/SignInPage.tsx";
 import {AuthRootLayout} from "./components/registration/AuthRootLayout.tsx";
+import {OtpRequestPage} from "./pages/AuthPages/OtpRequestPage.tsx";
 
 function App() {
     const routes = createBrowserRouter([
@@ -33,6 +34,7 @@ function App() {
             element: <AuthRootLayout/>,
             children: [
                 {path: '', element: <SignInPage/>},
+                {path: 'otp-request', element: <OtpRequestPage/>}
             ]
         }
     ]);
