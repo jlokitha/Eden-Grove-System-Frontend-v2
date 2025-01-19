@@ -1,0 +1,20 @@
+.previousButton {
+    width: 140px;
+    height: 45px;
+    border: 2px solid #474747;
+    border-radius: 10px;
+    background: #fff;
+    margin-right: 20px;
+    color: black;
+    cursor: pointer;
+}
+
+#text {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.previousButton:hover {
+    background: #f8f8f8;
+}

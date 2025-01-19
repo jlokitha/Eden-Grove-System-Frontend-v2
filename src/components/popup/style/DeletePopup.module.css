@@ -1,0 +1,61 @@
+.deletePopup {
+    min-width: 450px;
+    background: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(calc(-50%), calc(-50%));
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+
+.deletePopup span {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background: var(--color-error-bg);
+    margin-bottom: 15px;
+}
+
+.deletePopup h1 {
+    font-size: 1.5rem;
+}
+
+.deletePopup p {
+    font-size: 0.9rem;
+    color: var(--color-secondary-text-color);
+}
+
+.buttonContainer {
+    padding: 0;
+}
+
+.button {
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+.btnCancel {
+    background: var(--color-light);
+    border: 2px solid var(--color-secondary-text-color);
+    color: var(--color-secondary-text-color);
+    transition: all 300ms ease-in-out;
+}
+
+.btnCancel:hover {
+    background: var(--color-hover-bg);
+}
+
+.btnDelete {
+    background: var(--color-error);
+    transition: all 300ms ease-in-out;
+}
+
+.btnDelete:hover {
+    opacity: 0.8;
+}

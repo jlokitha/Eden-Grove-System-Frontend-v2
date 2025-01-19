@@ -1,0 +1,31 @@
+.navBtn {
+    width: 100%;
+    min-height: 45px;
+    border: none;
+    border-radius: 10px;
+    background: #fff;
+    padding: 0 15px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: black;
+    margin-top: 10px;
+    transition: background 0.5s, opacity 0.3s;
+}
+
+.navBtn img {
+    max-height: 20px;
+    margin-right: 10px;
+}
+
+.navBtn img[src="/assets/icons/user-profile.svg"] {
+    max-height: 30px;
+}
+
+.navBtn:not(.navBtnActive):hover {
+    background: #eeeeee;
+}
+
+.navBtnActive {
+    background: #cfffe2;
+}
+

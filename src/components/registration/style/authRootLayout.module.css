@@ -1,0 +1,14 @@
+.rootLayout {
+    background-image: url("/src/assets/image/registration-bg-img.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+}
+
+#formContainer {
+    border-radius: 30px;
+    background: #fff;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+}

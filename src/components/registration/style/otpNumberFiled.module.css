@@ -1,0 +1,20 @@
+.input {
+    height: 40px;
+    max-width: 45px;
+    border: none;
+    border-bottom: 1px solid #000;
+    background: #fff;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    margin-right: 15px;
+    margin-bottom: 40px;
+    outline: none;
+    text-align: center;
+}
+
+.input[type="number"]::-webkit-outer-spin-button,
+.input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

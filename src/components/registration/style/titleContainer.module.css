@@ -1,0 +1,15 @@
+#titleContainer {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#titleContainer h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+#titleContainer p {
+    max-width: 300px;
+    word-wrap: break-word;
+}

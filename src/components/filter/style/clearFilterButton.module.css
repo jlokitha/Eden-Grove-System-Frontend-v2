@@ -1,0 +1,21 @@
+.clearFilter {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    background: var(--color-light);
+    border: 2px solid var(--color-secondary-text-color);
+    border-radius: 10px;
+    padding: 0;
+    margin-left: 10px;
+    transition: 300ms ease-in-out;
+}
+
+.clearFilter img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+
+.clearFilter:hover {
+    background: var(--color-hover-bg);
+}

@@ -1,0 +1,15 @@
+.search {
+    min-width: 150px;
+    height: 40px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    background: #139547;
+    transition: 300ms ease-in-out;
+}
+
+.search:hover {
+    opacity: 0.8;
+}

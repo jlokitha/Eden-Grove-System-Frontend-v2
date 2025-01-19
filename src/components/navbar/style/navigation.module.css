@@ -1,0 +1,23 @@
+#navbar {
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 220px;
+    min-width: 220px;
+    background: #fff;
+    padding: 25px;
+    margin-right: 10px;
+}
+
+#logo {
+    max-height: 70px;
+}
+
+.navBtnContainer {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.navBtnContainer:last-child {
+    margin-bottom: 0;
+}

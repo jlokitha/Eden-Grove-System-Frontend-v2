@@ -1,0 +1,34 @@
+.topContainer {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.bottomContainer {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1.4fr 1.5fr 1.1fr;
+    margin-top: 30px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sideCardContainer {
+    overflow: hidden;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    scrollbar-width: none;
+    align-content: start;
+    padding-bottom: 10px;
+}
+
+.sideCardContainer h2 {
+    font-size: 1.3rem;
+    position: sticky;
+    padding-bottom: 5px;
+    top: 0;
+    background: var(--color-light);
+}

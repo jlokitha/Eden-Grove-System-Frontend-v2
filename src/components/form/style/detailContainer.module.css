@@ -1,0 +1,72 @@
+.detailContainer {
+    width: 100%;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.lbl {
+    color: #727374;
+}
+
+.tagContainer {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: auto;
+    gap: 10px;
+}
+
+.tagContainer p {
+    background: var(--color-tag-bg);
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 0;
+    width: fit-content;
+}
+
+.tag {
+    margin: auto 0;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+}
+
+.availableTag {
+    color: var(--color-primary);
+    background: var(--color-primary-bg);
+}
+
+.outOfServiceTag {
+    color: var(--color-error);
+    background: var(--color-error-bg);
+}
+
+.inUseTag {
+    color: var(--color-url-text);
+    background: var(--color-blue-bg);
+}
+
+.underMaintenanceTag {
+    color: var(--color-yellow-text);
+    background: var(--color-yellow-bg);
+}
+
+.location-url a {
+    white-space: nowrap;
+    text-decoration: none;
+    margin: 0 5px 0 0;
+    color: var(--color-url-text);
+}
+
+.detailContainer select {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 0;
+    padding: 10px;
+    border-bottom: 1px solid #727374;
+    outline: none;
+    font-size: 0.9rem;
+}

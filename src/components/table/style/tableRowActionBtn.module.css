@@ -1,0 +1,25 @@
+.button {
+    background: #f9f9f9;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    margin: auto;
+    padding: 0;
+    transition: 300ms ease-in-out;
+}
+
+.viewBtn img {
+    width: 20px;
+    height: 14.672px;
+}
+
+.updateBtn img {
+    width: 20px;
+    height: 15.556px;
+}
+
+.deleteBtn img {
+    width: 17px;
+    height: 18.125px;
+}
