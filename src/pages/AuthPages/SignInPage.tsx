@@ -1,5 +1,5 @@
 import {FormLogo} from "../../components/registration/FormLogo.tsx";
-import styles from "./style/signIn.module.css";
+import styles from "./style/authPages.module.css";
 import {TitleContainer} from "../../components/registration/TitleContainer.tsx";
 import {EmailInputField} from "../../components/registration/EmailInputField.tsx";
 import {useState} from "react";

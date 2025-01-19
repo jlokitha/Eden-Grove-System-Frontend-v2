@@ -1,4 +1,4 @@
-import styles from "./style/signIn.module.css";
+import styles from "./style/authPages.module.css";
 import {FormLogo} from "../../components/registration/FormLogo.tsx";
 import {TitleContainer} from "../../components/registration/TitleContainer.tsx";
 import {useState} from "react";
@@ -14,6 +14,7 @@ export function OtpRequestPage() {
 
     const handleSubmit = () => {
         console.log(`Requesting OTP for email: ${email}`);
+        navigation('/otp-verification');
     }
 
     const handlePrevious = () => {
