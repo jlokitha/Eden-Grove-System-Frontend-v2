@@ -4,7 +4,7 @@ import {SelectorComponent} from "../../components/filter/SelectorComponent.tsx";
 import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
 import {useSelector} from "react-redux";
 import {User} from "../../model/User.ts";
-import {DeleteRowBtn} from "../../components/buttons/DeleteRowBtn.tsx";
+import {DeleteRowBtn} from "../../components/table/DeleteRowBtn.tsx";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
 
 interface RootState {

@@ -1,4 +1,4 @@
-#staffViewPopup {
+#viewPopup {
     min-width: 500px;
     background: #fff;
     padding: 15px;
@@ -26,4 +26,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+}
+
+.wrapper {
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.wrapper:last-child {
+    margin-bottom: 0;
 }

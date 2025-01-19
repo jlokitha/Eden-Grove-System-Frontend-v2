@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import styles from "./style/staffView.module.css";
+import styles from "./style/view.module.css";
 import {CloseBtn} from "../buttons/CloseBtn.tsx";
 import {DetailContainer} from "../form/DetailContainer.tsx";
 import {Staff} from "../../model/Staff.ts";
@@ -28,7 +28,7 @@ export function StaffView({staffId, onClose}: StaffViewProps) {
     }
 
     return (
-        <section id={styles.staffViewPopup}>
+        <section id={styles.viewPopup}>
             <div className={`${styles.titleContainer} d-flex justify-content-between align-items-center`}>
                 <h1>Staff Details</h1>
                 <CloseBtn onClick={onClose}/>

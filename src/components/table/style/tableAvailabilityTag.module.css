@@ -1,0 +1,26 @@
+.tag {
+    margin: 0;
+    padding: 3px 15px;
+    border-radius: 10px;
+    max-width: fit-content;
+}
+
+.availableTag {
+    color: var(--color-primary);
+    background: var(--color-primary-bg);
+}
+
+.outOfServiceTag {
+    color: var(--color-error);
+    background: var(--color-error-bg);
+}
+
+.inUseTag {
+    color: var(--color-url-text);
+    background: var(--color-blue-bg);
+}
+
+.underMaintenanceTag {
+    color: var(--color-yellow-text);
+    background: var(--color-yellow-bg);
+}
