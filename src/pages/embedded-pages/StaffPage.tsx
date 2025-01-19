@@ -11,8 +11,10 @@ import {useDispatch, useSelector} from "react-redux";
 import page from "./styles/embeddedPage.module.css"
 import {useState} from "react";
 import {StaffAddOrUpdate} from "../../components/popup/StaffAddOrUpdate.tsx";
-import {setStaff} from "../../reducers/StaffReducer.ts";
+import {addStaff, deleteStaff, updateStaff} from "../../reducers/StaffReducer.ts";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
+import {StaffView} from "../../components/popup/StaffView.tsx";
+import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
 
 interface RootState {
     staff: Staff[];
@@ -25,6 +27,8 @@ export function StaffPage() {
 
     const [openPopup, setOpenPopup] = useState(false);
     const [popupType, setPopupType] = useState<"save" | "update">("save");
+    const [viewPopup, setViewPopup] = useState(false);
+    const [deletePopup, setDeletePopup] = useState(false);
     const [selectedStaffId, setSelectedStaffId] = useState<string | undefined>(undefined);
 
     const staffs = useSelector((state: RootState) => state.staff);
@@ -64,10 +68,14 @@ export function StaffPage() {
         setOpenPopup(true);
     };
 
-    const handleSubmit = (staff: Staff) => {
-        console.log(`Add or Update Staff ${staff.name}`);
+    const handleSubmit = (event: React.FormEvent, staff: Staff) => {
+        event.preventDefault();
+        if (popupType === "save") {
+            dispatch(addStaff(staff));
+        } else if (popupType === "update") {
+            dispatch(updateStaff(staff));
+        }
         setOpenPopup(false);
-        dispatch(setStaff(staff));
     };
 
     const handleSearch = () => {
@@ -79,12 +87,25 @@ export function StaffPage() {
     }
 
     const handleView = (id: string) => {
-        console.log(`View staff with ID: ${id}`);
+        setSelectedStaffId(id);
+        setViewPopup(true);
     };
 
     const handleDelete = (id: string) => {
-        console.log(`Delete staff with ID: ${id}`);
+        setSelectedStaffId(id);
+        setDeletePopup(true);
     };
+
+    const handleDeleteConfirm = () => {
+        if (selectedStaffId) {
+            dispatch(deleteStaff(selectedStaffId));
+        }
+        setDeletePopup(false);
+    }
+
+    const handleDeleteCancel = () => {
+        setDeletePopup(false);
+    }
 
     return (
         <div className={page.embeddedPage}>
@@ -154,6 +175,15 @@ export function StaffPage() {
                     onSubmit={handleSubmit}
                     onClose={() => setOpenPopup(false)}
                 />
+            )}
+            {viewPopup && (
+                <StaffView
+                    staffId={selectedStaffId!}
+                    onClose={() => setViewPopup(false)}
+                />
+            )}
+            {deletePopup && (
+                <DeletePopup onDelete={handleDeleteConfirm} onCancel={handleDeleteCancel}/>
             )}
         </div>
     )

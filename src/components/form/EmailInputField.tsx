@@ -2,6 +2,7 @@ import styles from "./style/formInput.module.css"
 
 interface EmailInputFieldProps {
     label: string;
+    value: string;
     onChange: (value: string) => void;
 }
 
@@ -13,6 +14,7 @@ export function EmailInputField(props: EmailInputFieldProps) {
                 type="email"
                 required
                 className={styles.input}
+                value={props.value}
                 onChange={(e) => props.onChange(e.target.value)}
                 onInput={(e) => e.currentTarget.setCustomValidity('')}
             />
