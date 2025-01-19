@@ -8,7 +8,7 @@ import {ButtonContainer} from "../form/ButtonContainer.tsx";
 import {Staff} from "../../model/Staff.ts";
 import {useSelector} from "react-redux";
 import {TitleContainer} from "../form/TitleContainer.tsx";
-import styles from "./style/staffAddOrUpdate.module.css"
+import styles from "./style/addOrUpdate.module.css"
 
 interface AddStaffProps {
     type: "save" | "update";
@@ -95,7 +95,7 @@ export function StaffAddOrUpdate(props: AddStaffProps) {
     ];
 
     return (
-        <div id={styles.staffAddOrUpdate}>
+        <div id={styles.addOrUpdate}>
             <TitleContainer title={props.type === 'save' ? 'Add Staff' : 'Update Staff'} onClose={props.onClose}/>
             <form className={styles.mainContent}>
                 <h3>Details</h3>

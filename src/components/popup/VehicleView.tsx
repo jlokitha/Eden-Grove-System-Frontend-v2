@@ -30,7 +30,7 @@ export function VehicleView({vehicleId, onClose}: VehicleViewProps) {
     }
 
     return (
-        <section id={styles.viewPopup}>
+        <section className={styles.viewPopup}>
             <div className={`${styles.titleContainer} d-flex justify-content-between align-items-center`}>
                 <h1>Vehicle Details</h1>
                 <CloseBtn onClick={onClose}/>

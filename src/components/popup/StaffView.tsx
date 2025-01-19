@@ -28,7 +28,7 @@ export function StaffView({staffId, onClose}: StaffViewProps) {
     }
 
     return (
-        <section id={styles.viewPopup}>
+        <section className={styles.viewPopup}>
             <div className={`${styles.titleContainer} d-flex justify-content-between align-items-center`}>
                 <h1>Staff Details</h1>
                 <CloseBtn onClick={onClose}/>

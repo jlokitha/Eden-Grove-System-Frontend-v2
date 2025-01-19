@@ -15,7 +15,10 @@ interface DashboardFieldCardProps {
 export function DashboardFieldCard(props: DashboardFieldCardProps) {
     return (
         <div className={`${styles.horizontalCard} d-flex justify-content-start align-items-center`}>
-            <img src={`data:image/png;base64,${props.field.fieldImage1}`} alt=""/>
+            <img
+                // src={`data:image/png;base64,${props.field.fieldImage1}`}
+                src={props.field.fieldImage1}
+                alt="field image"/>
             <div className={`${styles.textContainer} d-flex flex-column`}>
                 <label className={styles.cardTitle}>{props.field.fieldName}</label>
                 <label className={styles.cardText}>{props.field.fieldSize} Sq.mt</label>

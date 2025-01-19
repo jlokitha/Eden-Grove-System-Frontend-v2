@@ -15,7 +15,8 @@ export function CropCard(props: CropCardProps) {
     return (
         <div key={props.index} className={styles.card}>
             <img
-                src={`data:image/png;base64,${props.crop.cropImage}`}
+                // src={`data:image/png;base64,${props.crop.cropImage}`}
+                src={props.crop.cropImage}
                 className={styles.cardImgTop}
                 alt="Crop Image"
             />

@@ -1,4 +1,4 @@
-#staffAddOrUpdate {
+#addOrUpdate {
     min-width: 650px;
     background: #fff;
     padding: 20px;
@@ -9,11 +9,6 @@
     transform: translate(calc(-50%), calc(-50%));
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.1);
     z-index: 1001;
-}
-
-#staffAddOrUpdate .titleContainer {
-    border: none;
-    padding: 0;
 }
 
 .wrapper {
