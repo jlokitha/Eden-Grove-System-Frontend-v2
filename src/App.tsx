@@ -14,6 +14,7 @@ import {AuthRootLayout} from "./components/registration/AuthRootLayout.tsx";
 import {OtpRequestPage} from "./pages/AuthPages/OtpRequestPage.tsx";
 import {OtpVerification} from "./pages/AuthPages/OtpVerification.tsx";
 import {SignUpPage} from "./pages/AuthPages/SignUpPage.tsx";
+import {PasswordResetPage} from "./pages/AuthPages/PasswordResetPage.tsx";
 
 function App() {
     const routes = createBrowserRouter([
@@ -38,7 +39,8 @@ function App() {
                 {path: 'sign-in', element: <SignInPage/>},
                 {path: 'otp-request', element: <OtpRequestPage/>},
                 {path: 'otp-verification', element: <OtpVerification/>},
-                {path: 'sign-up', element: <SignUpPage/>}
+                {path: 'sign-up', element: <SignUpPage/>},
+                {path: 'password-reset', element: <PasswordResetPage/>}
             ]
         }
     ]);
