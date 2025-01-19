@@ -74,12 +74,13 @@ export function StaffAddOrUpdate(props: AddStaffProps) {
     };
 
     const genderOptions = [
-        {value: "", text: "GENDER"},
+        {value: "", text: "Select a gender"},
         {value: "MALE", text: "MALE"},
         {value: "FEMALE", text: "FEMALE"},
     ];
 
     const designationOptions = [
+        {value: "", text: "Select a designation"},
         {value: "MANAGER", text: "MANAGER"},
         {value: "SENIOR_ASSISTANT_MANAGER", text: "SENIOR_ASSISTANT_MANAGER"},
         {value: "ASSISTANT_MANAGER", text: "ASSISTANT_MANAGER"},

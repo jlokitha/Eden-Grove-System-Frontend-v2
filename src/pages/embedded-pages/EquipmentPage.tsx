@@ -10,6 +10,7 @@ import {ViewRowBtn} from "../../components/table/ViewRowBtn.tsx";
 import {UpdateRowBtn} from "../../components/table/UpdateRowBtn.tsx";
 import {DeleteRowBtn} from "../../components/table/DeleteRowBtn.tsx";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
+import {TableAvailabilityTag} from "../../components/table/TableAvailabilityTag.tsx";
 
 interface RootState {
     equipment: Equipment[];
@@ -94,7 +95,9 @@ export function EquipmentPage() {
                             <tr key={index}>
                                 <td>{equipment.name}</td>
                                 <td>{equipment.type}</td>
-                                <td>{equipment.status}</td>
+                                <td  className="d-flex justify-content-center">
+                                    <TableAvailabilityTag statusText={equipment.status}/>
+                                </td>
                                 <td>
                                     <div className={`${page.actionContainer} d-flex`}>
                                         <ViewRowBtn onClick={() => handleView(equipment.equipmentId)}/>

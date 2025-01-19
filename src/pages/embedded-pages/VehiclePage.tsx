@@ -140,7 +140,7 @@ export function VehiclePage() {
             </section>
 
             {openPopup && (
-                <VehicleAddOrUpdate type={popupType} onSubmit={handleSubmit} onClose={() => setOpenPopup(false)}/>
+                <VehicleAddOrUpdate type={popupType} vehicleId={selectedVehicleId} onSubmit={handleSubmit} onClose={() => setOpenPopup(false)}/>
             )}
             {viewPopup && (
                 <VehicleView vehicleId={selectedVehicleId!} onClose={() => setViewPopup(false)}/>

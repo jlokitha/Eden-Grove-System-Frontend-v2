@@ -1,13 +1,21 @@
-import {useRef, useState} from "react";
+import {useRef, useState, useEffect} from "react";
 import styles from "./style/imageInputContainer.module.css";
 
 interface ImageInputContainerProps {
+    value?: string;
     onImageSelect: (image: string | null) => void;
 }
 
-export function ImageInputContainer({ onImageSelect }: ImageInputContainerProps) {
-    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+export function ImageInputContainer({ value, onImageSelect }: ImageInputContainerProps) {
+    const [selectedImage, setSelectedImage] = useState<string | null>(value || null);
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        console.log("value", value);
+        if (value) {
+            setSelectedImage(value);
+        }
+    }, [value]);
 
     const handleContainerClick = () => {
         if (fileInputRef.current) {
