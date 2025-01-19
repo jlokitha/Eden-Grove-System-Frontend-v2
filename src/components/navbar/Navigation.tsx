@@ -2,8 +2,9 @@ import { NavButton } from "./NavButton.tsx";
 import styles from "./style/navigation.module.css";
 import { PasswordUpdateBtn } from "./PasswordUpdateBtn.tsx";
 import { LogoutButton } from "./LogoutButton.tsx";
-import { useState } from "react";
+import {useEffect, useState } from "react";
 import navBtn from './style/navButton.module.css'
+import { useLocation } from "react-router";
 
 const navButtons = [
     { icon: '/src/assets/icons/dashboard-black.svg', text: 'Dashboard', path: '/' },
@@ -22,6 +23,13 @@ const navButtons = [
 
 export function Navigation() {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
+    const location = useLocation();
+
+    useEffect(() => {
+        const currentPath = location.pathname;
+        const activeButtonIndex = navButtons.findIndex(button => button.path === currentPath);
+        setActiveIndex(activeButtonIndex);
+    }, [location.pathname]);
 
     const handleNavButtonClick = (index: number) => {
         setActiveIndex(index);

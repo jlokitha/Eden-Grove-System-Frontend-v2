@@ -1,14 +1,14 @@
 import {useEffect, useState} from "react";
-import {CountCard} from "../components/cards/CountCard.tsx";
+import {CountCard} from "../../components/cards/CountCard.tsx";
 import dashboard from "./styles/dashboardPage.module.css";
 import page from "./styles/embeddedPage.module.css";
-import {DashboardFieldCard} from "../components/cards/DashboardFieldCard.tsx";
-import {MonitoringLog} from "../model/MonitoringLog.ts";
-import {DashboardLogCard} from "../components/cards/DashboardLogCard.tsx";
-import DoughnutChart from "../components/chart/DoughnutChart.tsx";
-import {FieldDashboard} from "../model/FieldDashboard.ts";
-import {ChartData} from "../model/ChartData.ts";
-import {Field} from "../model/Field.ts";
+import {DashboardFieldCard} from "../../components/cards/DashboardFieldCard.tsx";
+import {MonitoringLog} from "../../model/MonitoringLog.ts";
+import {DashboardLogCard} from "../../components/cards/DashboardLogCard.tsx";
+import DoughnutChart from "../../components/chart/DoughnutChart.tsx";
+import {FieldDashboard} from "../../model/FieldDashboard.ts";
+import {ChartData} from "../../model/ChartData.ts";
+import {Field} from "../../model/Field.ts";
 
 export function DashboardPage() {
     const [staffCount, setStaffCount] = useState(0);
@@ -168,7 +168,7 @@ export function DashboardPage() {
                     <h2 className="text-center">Field Details</h2>
 
                     {fields && fields.map((field) => (
-                        <DashboardFieldCard field={field}/>
+                        <DashboardFieldCard key={field.fCode} field={field}/>
                     ))}
                 </div>
 
@@ -181,7 +181,7 @@ export function DashboardPage() {
                     <h2 className="text-center">Recent Logs</h2>
 
                     {logs && logs.map((log) => (
-                        <DashboardLogCard log={log}/>
+                        <DashboardLogCard key={log.logCode} log={log}/>
                     ))}
                 </div>
             </section>

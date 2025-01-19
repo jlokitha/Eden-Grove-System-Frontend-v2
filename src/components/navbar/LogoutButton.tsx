@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import styles from "./style/logoutBtn.module.css";
 import navBtn from "./style/navButton.module.css"
+import {useNavigate} from "react-router-dom";
 
 export function LogoutButton() {
     const [iconSrc, setIconSrc] = useState('/src/assets/icons/logout-black.svg');
+
+    const navigation = useNavigate();
 
     const handleMouseEnter = () => {
         setIconSrc('/src/assets/icons/logout-red.svg');
@@ -14,7 +17,7 @@ export function LogoutButton() {
     };
 
     const handleClick = () => {
-        console.log('Logout clicked');
+        navigation('/auth/sign-in');
     };
 
     return (

@@ -1,18 +1,18 @@
-import {AddBtn} from "../components/buttons/AddBtn.tsx";
-import {SelectorComponent} from "../components/filter/SelectorComponent.tsx";
-import {SearchButton} from "../components/filter/SearchButton.tsx";
-import {ClearFilterButton} from "../components/filter/ClearFilterButton.tsx";
-import {SearchComponent} from "../components/filter/SearchComponent.tsx";
-import {ViewRowBtn} from "../components/buttons/ViewRowBtn.tsx";
-import {UpdateRowBtn} from "../components/buttons/UpdateRowBtn.tsx";
-import {DeleteRowBtn} from "../components/buttons/DeleteRowBtn.tsx";
-import {Staff} from "../model/Staff.ts";
+import {AddBtn} from "../../components/buttons/AddBtn.tsx";
+import {SelectorComponent} from "../../components/filter/SelectorComponent.tsx";
+import {SearchButton} from "../../components/filter/SearchButton.tsx";
+import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
+import {SearchComponent} from "../../components/filter/SearchComponent.tsx";
+import {ViewRowBtn} from "../../components/buttons/ViewRowBtn.tsx";
+import {UpdateRowBtn} from "../../components/buttons/UpdateRowBtn.tsx";
+import {DeleteRowBtn} from "../../components/buttons/DeleteRowBtn.tsx";
+import {Staff} from "../../model/Staff.ts";
 import {useDispatch, useSelector} from "react-redux";
 import page from "./styles/embeddedPage.module.css"
 import {useState} from "react";
-import {StaffAddOrUpdate} from "../components/popup/StaffAddOrUpdate.tsx";
-import {setStaff} from "../reducers/StaffReducer.ts";
-import {PageTitle} from "../components/filter/PageTitle.tsx";
+import {StaffAddOrUpdate} from "../../components/popup/StaffAddOrUpdate.tsx";
+import {setStaff} from "../../reducers/StaffReducer.ts";
+import {PageTitle} from "../../components/filter/PageTitle.tsx";
 
 interface RootState {
     staff: Staff[];

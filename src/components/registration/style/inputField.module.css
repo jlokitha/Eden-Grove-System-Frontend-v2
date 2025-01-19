@@ -1,0 +1,31 @@
+.input {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.input img {
+    max-height: 20px;
+}
+
+.input input {
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #000;
+    background: #fff;
+    padding: 10px;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-left: 15px;
+    outline: none;
+}
+
+.input div {
+    width: 100%;
+    position: relative;
+}
+
+.visibilityToggle {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}

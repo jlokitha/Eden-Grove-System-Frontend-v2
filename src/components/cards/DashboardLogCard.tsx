@@ -2,6 +2,7 @@ import styles from "./style/horizontalCard.module.css";
 import {MonitoringLog} from "../../model/MonitoringLog.ts";
 
 interface DashboardLogCardProps {
+    key: string;
     log: MonitoringLog;
 }
 

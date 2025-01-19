@@ -2,7 +2,7 @@ import {Navigation} from "./navbar/Navigation.tsx";
 import {Outlet} from "react-router";
 import {TopBar} from "./topbar/TopBar.tsx";
 
-export function RootLayout() {
+export function MainRootLayout() {
     return (
         <div className="d-flex">
             <Navigation/>

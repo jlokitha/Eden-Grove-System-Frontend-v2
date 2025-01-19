@@ -1,15 +1,15 @@
 import page from "./styles/embeddedPage.module.css"
-import {AddBtn} from "../components/buttons/AddBtn.tsx";
-import {SearchButton} from "../components/filter/SearchButton.tsx";
-import {ClearFilterButton} from "../components/filter/ClearFilterButton.tsx";
-import {SelectorComponent} from "../components/filter/SelectorComponent.tsx";
+import {AddBtn} from "../../components/buttons/AddBtn.tsx";
+import {SearchButton} from "../../components/filter/SearchButton.tsx";
+import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
+import {SelectorComponent} from "../../components/filter/SelectorComponent.tsx";
 import {useState} from "react";
 import {useSelector} from "react-redux";
-import {Equipment} from "../model/Euipment.ts";
-import {ViewRowBtn} from "../components/buttons/ViewRowBtn.tsx";
-import {UpdateRowBtn} from "../components/buttons/UpdateRowBtn.tsx";
-import {DeleteRowBtn} from "../components/buttons/DeleteRowBtn.tsx";
-import {PageTitle} from "../components/filter/PageTitle.tsx";
+import {Equipment} from "../../model/Euipment.ts";
+import {ViewRowBtn} from "../../components/buttons/ViewRowBtn.tsx";
+import {UpdateRowBtn} from "../../components/buttons/UpdateRowBtn.tsx";
+import {DeleteRowBtn} from "../../components/buttons/DeleteRowBtn.tsx";
+import {PageTitle} from "../../components/filter/PageTitle.tsx";
 
 interface RootState {
     equipment: Equipment[];
