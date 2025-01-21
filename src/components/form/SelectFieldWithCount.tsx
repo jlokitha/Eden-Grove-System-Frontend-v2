@@ -16,9 +16,9 @@ export function SelectFieldWithCount(props: SelectFieldWithCountProps) {
 
     return (
         <div className={`${styles.detailContainer} d-flex flex-column`}>
-            <div className="d-flex justify-content-between align-items-center">
-                <label className="lbl">{props.label}</label>
-                <label className="count-tag">{props.secondLabel}: {props.selectedValues.length}</label>
+            <div className="d-flex justify-content-between align-items-center mt-1 mb-1">
+                <label>{props.label}</label>
+                <label className={styles.label}>{props.secondLabel}: {props.selectedValues.length}</label>
             </div>
             <select
                 multiple

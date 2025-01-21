@@ -5,10 +5,13 @@ import {DateFieldComponent} from "../../components/filter/DateFieldComponent.tsx
 import {SearchButton} from "../../components/filter/SearchButton.tsx";
 import {ClearFilterButton} from "../../components/filter/ClearFilterButton.tsx";
 import {AddBtn} from "../../components/buttons/AddBtn.tsx";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {MonitoringLog} from "../../model/MonitoringLog.ts";
 import {LogCard} from "../../components/cards/LogCard.tsx";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
+import {MonitoringLogAddOrUpdate} from "../../components/popup/MonitoringLogAddOrUpdate.tsx";
+import {MonitoringLogView} from "../../components/popup/MonitoringLogView.tsx";
+import {addLog, updateLog} from "../../reducers/MonitoringLogReducer.ts";
 
 interface RootState {
     log: MonitoringLog[];
@@ -18,13 +21,34 @@ export function MonitoringLogPage() {
     const [fieldName, setFieldName] = useState('');
     const [logDate, setLogDate] = useState('');
 
+    const [openPopup, setOpenPopup] = useState(false);
+    const [popupType, setPopupType] = useState<"save" | "update">("save");
+    const [viewPopup, setViewPopup] = useState(false);
+    const [selectedLogId, setSelectedLogId] = useState<string | undefined>(undefined);
+
     const logs = useSelector((state: RootState) => state.log);
+    const dispatch = useDispatch();
+
+    const handleSubmit = (event: React.FormEvent, log: MonitoringLog) => {
+        event.preventDefault();
+        if (popupType === "save") {
+            dispatch(addLog(log));
+        } else if (popupType === "update") {
+            dispatch(updateLog(log));
+        }
+        setOpenPopup(false);
+    };
 
     const handleAdd = () => {
+        setPopupType("save");
+        setSelectedLogId(undefined);
+        setOpenPopup(true);
     };
 
     const handleUpdate = (id: string) => {
-        console.log(`Update Log with ID: ${id}`);
+        setPopupType("update");
+        setSelectedLogId(id);
+        setOpenPopup(true);
     };
 
     const handleSearch = () => {
@@ -36,7 +60,8 @@ export function MonitoringLogPage() {
     }
 
     const handleView = (id: string) => {
-        console.log(`View Log with ID: ${id}`);
+        setSelectedLogId(id);
+        setViewPopup(true);
     };
 
     return (
@@ -66,6 +91,19 @@ export function MonitoringLogPage() {
                     />
                 ))}
             </section>
+
+            {openPopup && (
+                <MonitoringLogAddOrUpdate
+                    type={popupType}
+                    logId={selectedLogId}
+                    onSubmit={handleSubmit}
+                    onClose={() => setOpenPopup(false)}
+                />
+            )}
+
+            {viewPopup && (
+                <MonitoringLogView logCode={selectedLogId!} onClose={() => setViewPopup(false)}/>
+            )}
         </div>
     )
 }

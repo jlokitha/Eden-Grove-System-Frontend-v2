@@ -18,11 +18,17 @@ const logSlice = createSlice({
     name: 'log',
     initialState,
     reducers: {
-        setLog: (state, action) => {
+        addLog: (state, action) => {
             state.push(action.payload);
+        },
+        updateLog: (state, action) => {
+            const index = state.findIndex(log => log.logCode === action.payload.id);
+            if (index !== -1) {
+                state[index] = action.payload;
+            }
         }
     }
 })
 
-export const {setLog} = logSlice.actions;
+export const {addLog, updateLog} = logSlice.actions;
 export default logSlice.reducer;

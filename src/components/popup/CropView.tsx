@@ -35,7 +35,7 @@ export function CropView({cropCode, onClose}: CropViewProps) {
                 <h1>Crop Details</h1>
                 <CloseBtn onClick={onClose}/>
             </div>
-            <div className="main-content">
+            <div>
                 <Carousel image1={crop.cropImage} image2={undefined}/>
                 <div className={`${styles.wrapper} d-flex justify-content-between align-items-center mb-3`}>
                     <DetailContainer label={'Common Name'} value={crop.commonName}/>
