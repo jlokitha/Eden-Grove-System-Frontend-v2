@@ -24,6 +24,18 @@
     width: fit-content;
 }
 
+.label {
+    min-width: fit-content;
+    background: var(--color-tag-bg);
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 0;
+    width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .tag {
     margin: auto 0;
     padding: 10px;
