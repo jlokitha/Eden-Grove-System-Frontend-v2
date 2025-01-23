@@ -12,7 +12,7 @@ import {Vehicle} from "../../model/Vehicle.ts";
 interface AddVehicleProps {
     type: "save" | "update";
     vehicleId?: string;
-    onSubmit: (event: React.FormEvent, staff: Staff) => void;
+    onSubmit: (event: React.FormEvent, vehicle: Vehicle) => void;
     onClose: () => void;
 }
 
@@ -32,7 +32,6 @@ export function VehicleAddOrUpdate(props: AddVehicleProps) {
     const vehicles = useSelector((state: RootState) => state.vehicle);
 
     useEffect(() => {
-        console.log('VehicleAddOrUpdate: useEffect', props.vehicleId);
         if (props.type === "update" && props.vehicleId) {
             const initialData = vehicles.find((vehicle: Vehicle) => vehicle.vehicleCode === props.vehicleId);
 
@@ -64,7 +63,6 @@ export function VehicleAddOrUpdate(props: AddVehicleProps) {
     ];
 
     const handleSubmit = () => {
-
     }
 
     return (

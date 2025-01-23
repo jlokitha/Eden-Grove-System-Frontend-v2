@@ -12,7 +12,9 @@ import {DeleteRowBtn} from "../../components/table/DeleteRowBtn.tsx";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
 import {TableAvailabilityTag} from "../../components/table/TableAvailabilityTag.tsx";
 import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
-import {deleteEquipment} from "../../reducers/EquipmentReducer.ts";
+import {addEquipment, deleteEquipment, updateEquipment} from "../../reducers/EquipmentReducer.ts";
+import {EquipmentAddOrUpdate} from "../../components/popup/EquipmentAddOrUpdate.tsx";
+import {EquipmentView} from "../../components/popup/EquipmentView.tsx";
 
 interface RootState {
     equipment: Equipment[];
@@ -22,6 +24,9 @@ export function EquipmentPage() {
     const [type, setType] = useState('');
     const [status, setStatus] = useState('');
 
+    const [openPopup, setOpenPopup] = useState(false);
+    const [popupType, setPopupType] = useState<"save" | "update">("save");
+    const [viewPopup, setViewPopup] = useState(false);
     const [deletePopup, setDeletePopup] = useState(false);
     const [selectedEquipmentId, setSelectedEquipmentId] = useState<string | undefined>(undefined);
 
@@ -44,12 +49,25 @@ export function EquipmentPage() {
         {value: "UNDER_MAINTENANCE", text: "Under Maintenance"},
     ];
 
+    const handleSubmit = (event: React.FormEvent, equipment: Equipment) => {
+        event.preventDefault();
+        if (popupType === 'save') {
+            dispatch(addEquipment(equipment));
+        } else if (popupType === 'update') {
+            dispatch(updateEquipment(equipment))
+        }
+    }
+
     const handleAdd = () => {
-        console.log('Add equipment');
+        setPopupType("save");
+        setSelectedEquipmentId(undefined);
+        setOpenPopup(true);
     }
 
     const handleUpdate = (id: string) => {
-        console.log(`Update equipment with ID: ${id}`);
+        setPopupType("update");
+        setSelectedEquipmentId(id);
+        setOpenPopup(true);
     }
 
     const handleSearch = () => {
@@ -61,7 +79,8 @@ export function EquipmentPage() {
     }
 
     const handleView = (id: string) => {
-        console.log(`View equipment with ID: ${id}`);
+        setSelectedEquipmentId(id);
+        setViewPopup(true);
     };
 
     const handleDelete = (id: string) => {
@@ -129,6 +148,19 @@ export function EquipmentPage() {
                     </table>
                 </div>
             </section>
+
+            {openPopup && (
+                <EquipmentAddOrUpdate
+                    type={popupType}
+                    equipmentId={selectedEquipmentId}
+                    onSubmit={handleSubmit}
+                    onClose={() => setOpenPopup(false)}
+                />
+            )}
+
+            {viewPopup && (
+                <EquipmentView equipmentId={selectedEquipmentId!} onClose={() => setViewPopup(false)}/>
+            )}
 
             {deletePopup && (
                 <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
