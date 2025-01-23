@@ -1,0 +1,25 @@
+.detailContainer {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.detailContainer img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.lbl {
+    margin: 0;
+    padding-bottom: 4px;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.lbl:first-child {
+    font-size: 1rem;
+    font-weight: 500;
+    font-style: normal;
+}

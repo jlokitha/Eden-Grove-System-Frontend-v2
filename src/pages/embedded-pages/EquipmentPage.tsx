@@ -15,6 +15,7 @@ import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
 import {addEquipment, deleteEquipment, updateEquipment} from "../../reducers/EquipmentReducer.ts";
 import {EquipmentAddOrUpdate} from "../../components/popup/EquipmentAddOrUpdate.tsx";
 import {EquipmentView} from "../../components/popup/EquipmentView.tsx";
+import {Overlay} from "../../components/popup/Overlay.tsx";
 
 interface RootState {
     equipment: Equipment[];
@@ -132,7 +133,7 @@ export function EquipmentPage() {
                             <tr key={index}>
                                 <td>{equipment.name}</td>
                                 <td>{equipment.type}</td>
-                                <td  className="d-flex justify-content-center">
+                                <td className="d-flex justify-content-center">
                                     <TableAvailabilityTag statusText={equipment.status}/>
                                 </td>
                                 <td>
@@ -150,20 +151,27 @@ export function EquipmentPage() {
             </section>
 
             {openPopup && (
-                <EquipmentAddOrUpdate
-                    type={popupType}
-                    equipmentId={selectedEquipmentId}
-                    onSubmit={handleSubmit}
-                    onClose={() => setOpenPopup(false)}
-                />
+                <>
+                    <Overlay/>
+                    <EquipmentAddOrUpdate
+                        type={popupType}
+                        equipmentId={selectedEquipmentId}
+                        onSubmit={handleSubmit}
+                        onClose={() => setOpenPopup(false)}
+                    />
+                </>
             )}
-
             {viewPopup && (
-                <EquipmentView equipmentId={selectedEquipmentId!} onClose={() => setViewPopup(false)}/>
+                <>
+                    <Overlay/>
+                    <EquipmentView equipmentId={selectedEquipmentId!} onClose={() => setViewPopup(false)}/>
+                </>
             )}
-
             {deletePopup && (
-                <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+                <>
+                    <Overlay/>
+                    <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+                </>
             )}
         </div>
     )

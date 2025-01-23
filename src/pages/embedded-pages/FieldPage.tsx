@@ -13,6 +13,7 @@ import {addField, deleteField, updateField} from "../../reducers/FieldReducer.ts
 import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
 import {FieldAddOrUpdate} from "../../components/popup/FieldAddOrUpdate.tsx";
 import {FieldView} from "../../components/popup/FieldView.tsx";
+import {Overlay} from "../../components/popup/Overlay.tsx";
 
 interface RootState {
     field: Field[];
@@ -112,18 +113,27 @@ export function FieldPage() {
             </section>
 
             {openPopup && (
-                <FieldAddOrUpdate
-                    fieldId={selectedFieldId}
-                    onClose={() => setOpenPopup(false)}
-                    onSubmit={handleSubmit}
-                    type={popupType}
-                />
+                <>
+                    <Overlay/>
+                    <FieldAddOrUpdate
+                        fieldId={selectedFieldId}
+                        onClose={() => setOpenPopup(false)}
+                        onSubmit={handleSubmit}
+                        type={popupType}
+                    />
+                </>
             )}
             {viewPopup && (
-                <FieldView fieldId={selectedFieldId!} onClose={() => setViewPopup(false)}/>
+                <>
+                    <Overlay/>
+                    <FieldView fieldId={selectedFieldId!} onClose={() => setViewPopup(false)}/>
+                </>
             )}
             {deletePopup && (
-                <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+                <>
+                    <Overlay/>
+                    <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+                </>
             )}
         </div>
     )

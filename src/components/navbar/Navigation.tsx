@@ -21,7 +21,11 @@ const navButtons = [
     { icon: '/src/assets/icons/user-black.svg', text: 'User', path: '/user' },
 ];
 
-export function Navigation() {
+interface NavigationProps {
+    passwordUpdate: () => void;
+}
+
+export function Navigation({ passwordUpdate }: NavigationProps) {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const location = useLocation();
 
@@ -55,8 +59,11 @@ export function Navigation() {
             </div>
 
             <div className={styles.navBtnContainer}>
-                <PasswordUpdateBtn staffName="John Doe" staffRole="MANAGER"
-                                   onClick={() => console.log('Profile clicked')} />
+                <PasswordUpdateBtn
+                    staffName="John Doe"
+                    staffRole="MANAGER"
+                    onClick={passwordUpdate}
+                />
                 <LogoutButton />
             </div>
         </div>

@@ -12,6 +12,7 @@ import {addCrop, deleteCrop, updateCrop} from "../../reducers/CropReducer.ts";
 import {CropAddOrUpdate} from "../../components/popup/CropAddOrUpdate.tsx";
 import {CropView} from "../../components/popup/CropView.tsx";
 import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
+import {Overlay} from "../../components/popup/Overlay.tsx";
 
 interface RootState {
     crop: Crop[];
@@ -107,18 +108,27 @@ export function CropPage() {
                 ))}
             </section>
             {openPopup && (
-                <CropAddOrUpdate
-                    type={popupType}
-                    cropCode={selectedCropId}
-                    onSubmit={handleSubmit}
-                    onClose={() => setOpenPopup(false)}
-                />
+                <>
+                    <Overlay/>
+                    <CropAddOrUpdate
+                        type={popupType}
+                        cropCode={selectedCropId}
+                        onSubmit={handleSubmit}
+                        onClose={() => setOpenPopup(false)}
+                    />
+                </>
             )}
             {viewPopup && (
-                <CropView cropCode={selectedCropId!} onClose={() => setViewPopup(false)}/>
+                <>
+                    <Overlay/>
+                    <CropView cropCode={selectedCropId!} onClose={() => setViewPopup(false)}/>
+                </>
             )}
             {deletePopup && (
-                <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+                <>
+                    <Overlay/>
+                    <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+                </>
             )}
         </div>
     )

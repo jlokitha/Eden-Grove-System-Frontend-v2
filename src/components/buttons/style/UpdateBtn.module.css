@@ -1,0 +1,19 @@
+.buttonContainer {
+    width: 100%;
+}
+
+.buttonContainer button {
+    width: 120px;
+    height: 40px;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+}
+
+.buttonContainer button:hover {
+    opacity: 0.8;
+}
