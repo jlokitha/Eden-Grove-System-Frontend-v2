@@ -21,11 +21,15 @@ const equipmentSlice = createSlice({
         addEquipment: (state, action) => {
             state.push(action.payload);
         },
+        updateEquipment: (state, action) => {
+            const index = state.findIndex(equipment => equipment.equipmentId === action.payload.equipmentId);
+            state[index] = action.payload
+        },
         deleteEquipment: (state, action) => {
             return state.filter(equipment => equipment.equipmentId !== action.payload);
         }
     }
 })
 
-export const {addEquipment, deleteEquipment} = equipmentSlice.actions;
+export const {addEquipment, updateEquipment, deleteEquipment} = equipmentSlice.actions;
 export default equipmentSlice.reducer;

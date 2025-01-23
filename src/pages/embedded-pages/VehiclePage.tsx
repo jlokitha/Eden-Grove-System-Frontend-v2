@@ -14,8 +14,9 @@ import {PageTitle} from "../../components/filter/PageTitle.tsx";
 import {VehicleAddOrUpdate} from "../../components/popup/VehicleAddOrUpdate.tsx";
 import {VehicleView} from "../../components/popup/VehicleView.tsx";
 import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
-import {deleteVehicle} from "../../reducers/VehicleReducer.ts";
+import {addVehicle, deleteVehicle, updateVehicle} from "../../reducers/VehicleReducer.ts";
 import {TableAvailabilityTag} from "../../components/table/TableAvailabilityTag.tsx";
+import {Equipment} from "../../model/Euipment.ts";
 
 interface RootState {
     vehicle: Vehicle[];
@@ -42,8 +43,13 @@ export function VehiclePage() {
         {value: "UNDER_MAINTENANCE", text: "Under Maintenance"},
     ];
 
-    const handleSubmit = () => {
-        console.log('Submit Vehicle');
+    const handleSubmit = (event: React.FormEvent, vehicle: Vehicle) => {
+        event.preventDefault();
+        if (popupType === 'save') {
+            dispatch(addVehicle(vehicle));
+        } else if (popupType === 'update') {
+            dispatch(updateVehicle(vehicle))
+        }
     }
 
     const handleAdd = () => {
@@ -140,7 +146,11 @@ export function VehiclePage() {
             </section>
 
             {openPopup && (
-                <VehicleAddOrUpdate type={popupType} vehicleId={selectedVehicleId} onSubmit={handleSubmit} onClose={() => setOpenPopup(false)}/>
+                <VehicleAddOrUpdate
+                    type={popupType}
+                    vehicleId={selectedVehicleId}
+                    onSubmit={handleSubmit}
+                    onClose={() => setOpenPopup(false)}/>
             )}
             {viewPopup && (
                 <VehicleView vehicleId={selectedVehicleId!} onClose={() => setViewPopup(false)}/>
