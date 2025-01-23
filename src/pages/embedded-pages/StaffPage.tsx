@@ -15,6 +15,7 @@ import {addStaff, deleteStaff, updateStaff} from "../../reducers/StaffReducer.ts
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
 import {StaffView} from "../../components/popup/StaffView.tsx";
 import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
+import {Overlay} from "../../components/popup/Overlay.tsx";
 
 interface RootState {
     staff: Staff[];
@@ -79,7 +80,7 @@ export function StaffPage() {
     };
 
     const handleSearch = () => {
-        console.log('Search Staff with name: ', staffName , 'gender: ', gender, 'designation: ', designation);
+        console.log('Search Staff with name: ', staffName, 'gender: ', gender, 'designation: ', designation);
     }
 
     const handleClearFilter = () => {
@@ -169,21 +170,30 @@ export function StaffPage() {
             </section>
 
             {openPopup && (
-                <StaffAddOrUpdate
-                    type={popupType}
-                    staffId={selectedStaffId}
-                    onSubmit={handleSubmit}
-                    onClose={() => setOpenPopup(false)}
-                />
+                <>
+                    <Overlay/>
+                    <StaffAddOrUpdate
+                        type={popupType}
+                        staffId={selectedStaffId}
+                        onSubmit={handleSubmit}
+                        onClose={() => setOpenPopup(false)}
+                    />
+                </>
             )}
             {viewPopup && (
-                <StaffView
-                    staffId={selectedStaffId!}
-                    onClose={() => setViewPopup(false)}
-                />
+                <>
+                    <Overlay/>
+                    <StaffView
+                        staffId={selectedStaffId!}
+                        onClose={() => setViewPopup(false)}
+                    />
+                </>
             )}
             {deletePopup && (
-                <DeletePopup onDelete={handleDeleteConfirm} onCancel={handleDeleteCancel}/>
+                <>
+                    <Overlay/>
+                    <DeletePopup onDelete={handleDeleteConfirm} onCancel={handleDeleteCancel}/>
+                </>
             )}
         </div>
     )

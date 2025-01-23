@@ -8,6 +8,7 @@ import {DeleteRowBtn} from "../../components/table/DeleteRowBtn.tsx";
 import {PageTitle} from "../../components/filter/PageTitle.tsx";
 import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
 import {deleteUser} from "../../reducers/UserReducer.ts";
+import {Overlay} from "../../components/popup/Overlay.tsx";
 
 interface RootState {
     user: User[];
@@ -101,7 +102,10 @@ export function UserPage() {
             </section>
 
             {deletePopup && (
-                <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+                <>
+                    <Overlay/>
+                    <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+                </>
             )}
         </div>
     )

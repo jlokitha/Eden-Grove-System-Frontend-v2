@@ -16,7 +16,7 @@ import {VehicleView} from "../../components/popup/VehicleView.tsx";
 import {DeletePopup} from "../../components/popup/DeletePopup.tsx";
 import {addVehicle, deleteVehicle, updateVehicle} from "../../reducers/VehicleReducer.ts";
 import {TableAvailabilityTag} from "../../components/table/TableAvailabilityTag.tsx";
-import {Equipment} from "../../model/Euipment.ts";
+import {Overlay} from "../../components/popup/Overlay.tsx";
 
 interface RootState {
     vehicle: Vehicle[];
@@ -146,17 +146,27 @@ export function VehiclePage() {
             </section>
 
             {openPopup && (
-                <VehicleAddOrUpdate
-                    type={popupType}
-                    vehicleId={selectedVehicleId}
-                    onSubmit={handleSubmit}
-                    onClose={() => setOpenPopup(false)}/>
+                <>
+                    <Overlay/>
+                    <VehicleAddOrUpdate
+                        type={popupType}
+                        vehicleId={selectedVehicleId}
+                        onSubmit={handleSubmit}
+                        onClose={() => setOpenPopup(false)}
+                    />
+                </>
             )}
             {viewPopup && (
-                <VehicleView vehicleId={selectedVehicleId!} onClose={() => setViewPopup(false)}/>
+                <>
+                    <Overlay/>
+                    <VehicleView vehicleId={selectedVehicleId!} onClose={() => setViewPopup(false)}/>
+                </>
             )}
             {deletePopup && (
-                <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+                <>
+                    <Overlay/>
+                    <DeletePopup onCancel={handleDeleteCancel} onDelete={handleDeleteConfirm}/>
+                </>
             )}
         </div>
     );

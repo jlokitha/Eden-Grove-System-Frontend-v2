@@ -12,6 +12,7 @@ import {PageTitle} from "../../components/filter/PageTitle.tsx";
 import {MonitoringLogAddOrUpdate} from "../../components/popup/MonitoringLogAddOrUpdate.tsx";
 import {MonitoringLogView} from "../../components/popup/MonitoringLogView.tsx";
 import {addLog, updateLog} from "../../reducers/MonitoringLogReducer.ts";
+import {Overlay} from "../../components/popup/Overlay.tsx";
 
 interface RootState {
     log: MonitoringLog[];
@@ -83,26 +84,33 @@ export function MonitoringLogPage() {
 
             <section id={page.cardContainer}>
                 {logs && logs.map((log: MonitoringLog, index: number) => (
-                    <LogCard
-                        log={log}
-                        index={index}
-                        viewOnClick={() => handleView(log.logCode)}
-                        updateOnClick={() => handleUpdate(log.logCode)}
-                    />
+                    <>
+                        <Overlay/>
+                        <LogCard
+                            log={log}
+                            index={index}
+                            viewOnClick={() => handleView(log.logCode)}
+                            updateOnClick={() => handleUpdate(log.logCode)}
+                        />
+                    </>
                 ))}
             </section>
-
             {openPopup && (
-                <MonitoringLogAddOrUpdate
-                    type={popupType}
-                    logId={selectedLogId}
-                    onSubmit={handleSubmit}
-                    onClose={() => setOpenPopup(false)}
-                />
+                <>
+                    <Overlay/>
+                    <MonitoringLogAddOrUpdate
+                        type={popupType}
+                        logId={selectedLogId}
+                        onSubmit={handleSubmit}
+                        onClose={() => setOpenPopup(false)}
+                    />
+                </>
             )}
-
             {viewPopup && (
-                <MonitoringLogView logCode={selectedLogId!} onClose={() => setViewPopup(false)}/>
+                <>
+                    <Overlay/>
+                    <MonitoringLogView logCode={selectedLogId!} onClose={() => setViewPopup(false)}/>
+                </>
             )}
         </div>
     )
